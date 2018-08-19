@@ -2,11 +2,21 @@ import React, { Component } from 'react';
 import './Home.css';
 import classes from './Home.css';
 
+// Components
+import Banner from '../../hoc/Banner/Banner';
+import SearchUtility from '../../components/SearchUtility/SearchUtility';
+
 class Home extends Component{
+
 	render(){
+		let city = this.props.match.params.city;
 		return (
-			<div className={classes.Temp}>
-				This is the home component
+			<div>
+				<Banner>
+					<SearchUtility city={city} />
+				</Banner>
+				
+				We are in home component outside banner component
 			</div>
 		)
 	}

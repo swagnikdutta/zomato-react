@@ -11,11 +11,11 @@ class App extends Component {
       <div>
         <Route path='/:city' component={Home} />
         <Route 
+        	exact path='/'
         	render = {() => (
         		<Redirect to={{pathname: "/bangalore"}} />
         	)}
 			  />
-
       </div>
     );
   }
