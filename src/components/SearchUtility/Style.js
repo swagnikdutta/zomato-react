@@ -30,3 +30,18 @@ export const Button = styled.button`
 		background-color: black;
 	}
 `;
+
+export const Checkbox = styled.input`
+	z-index: 20;
+	position: relative;
+	margin 1em;
+`;
+
+export const Wrapper = styled.div`
+	text-align: center;
+	color: white;
+	z-index: 20;
+	position: relative;
+	font-size: 0.8em;
+	
+`;

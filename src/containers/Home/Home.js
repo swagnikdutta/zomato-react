@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
-import './Home.css';
-import classes from './Home.css';
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions/index';
 
 // Components
 import Banner from '../../hoc/Banner/Banner';
 import SearchUtility from '../../components/SearchUtility/SearchUtility';
+import Collections from '../../components/Collections/Collections';
 
 class Home extends Component{
+
+	componentDidMount(){
+		let city = this.props.match.params.city;
+		
+		this.props.fetchRestaurantCollections(city);
+	}
 
 	render(){
 		let city = this.props.match.params.city;
@@ -15,11 +22,22 @@ class Home extends Component{
 				<Banner>
 					<SearchUtility city={city} />
 				</Banner>
-				
-				We are in home component outside banner component
+				<Collections />
 			</div>
 		)
 	}
 }
 
-export default Home;
+const mapStateToProps = state => {
+    return {
+        
+    };
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchRestaurantCollections: (city) => dispatch(actions.fetchRestaurantCollections(city)),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
