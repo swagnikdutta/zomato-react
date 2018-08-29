@@ -1,14 +1,19 @@
 import * as actionTypes from './actionTypes';
+import ActionHelpers from './actionHelpers';
 
-export const fetchRestaurantCollections = (city) => {
+const _ = require('lodash');
+
+export const fetchRestaurantCollections = (obj) => {
 	return {
 		type: actionTypes.FETCH_COLLECTIONS,
-		city
+		...obj
 	};
 }
 
-export const fetchCategories = () => {
-	return {
-		type: actionTypes.FETCH_CATEGORIES
-	};
-}
+// export const fetchCategories = async () => {
+// 	let categories = await ActionHelpers.fetchCategories();
+// 	return {
+// 		type: actionTypes.FETCH_CATEGORIES,
+// 		categories: categories
+// 	};
+// }

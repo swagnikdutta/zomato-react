@@ -33,7 +33,7 @@ class SearchUtility extends Component{
 				<Input placeholder='Search for restaurant or cuisines...' />
 				<Button onClick={this.handleSubmit}>Search</Button>
 				<Wrapper>
-					<Checkbox type="checkbox" value="restaurant" checked />Search by restaurant
+					<Checkbox type="checkbox" value="restaurant" defaultChecked />Search by restaurant
 					<Checkbox type="checkbox" value="cuisine" />Search by cuisine
 				</Wrapper>
 				

@@ -7,7 +7,6 @@ const getCityDetails = async (city) => {
 	});
 } 
 
-
 const fetchRestaurantCollections = async (cityId) => {
 	return await APIService.invoke({
 		url: `https://developers.zomato.com/api/v2.1/collections?city_id=${cityId}`,
@@ -15,7 +14,15 @@ const fetchRestaurantCollections = async (cityId) => {
 	});
 }
 
+const fetchCategories = async () => {
+	return await APIService.invoke({
+		url: 'https://developers.zomato.com/api/v2.1/categories',
+		method: 'GET'
+	});
+}
+
 export default {
 	getCityDetails,
 	fetchRestaurantCollections,
+	fetchCategories,
 };
