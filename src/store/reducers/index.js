@@ -3,18 +3,19 @@ import { updateObject } from '../utility';
 
 const initialState = {
 	restaurantCollections: [],
-	categories: [],
+	restaurantCategories: [],
 };
 
 const fetchRestaurantCollections = (state, action) => {
-	let restaurantCollections = {action}
 	return updateObject(state, {
-		restaurantCollections
+		restaurantCollections: {action}
 	});
 }
 
-const fetchCategories = (state) => {
-
+const fetchRestaurantCategories = (state, action) => {
+	return updateObject(state, {
+		restaurantCategories: {action}
+	})
 }
 
 const reducer = (state = initialState, action) => {
@@ -23,7 +24,7 @@ const reducer = (state = initialState, action) => {
 			return fetchRestaurantCollections(state, action);
 		}
 		case actionTypes.FETCH_CATEGORIES: {
-			return fetchCategories(state);
+			return fetchRestaurantCategories(state, action);
 		}
 		default: return state;
 	}

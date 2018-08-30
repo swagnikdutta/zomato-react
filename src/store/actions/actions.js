@@ -1,5 +1,5 @@
 import ZomatoService from '../../services/ZomatoService';
-import * as actions from './index';
+import * as actionTypes from './actionTypes';
 
 const _ = require('lodash');
 
@@ -16,19 +16,24 @@ const fetchRestaurantCollections = (city) => async (dispatch) => {
 		console.log(`There was an error fetching restaurant collections in: ${city}`);
 	});
 
-	dispatch(actions.fetchRestaurantCollections({
+	dispatch({
+		type: actionTypes.FETCH_COLLECTIONS,
 		restaurantCollections: _.get(restaurantCollections, 'data.collections')
-	}));
+	});
 }
 
-// const fetchCategories = async () => {
-// 	let categories = await ZomatoService.fetchCategories().catch((e) => {
-// 		console.log('There was an error fetching categories or restaurant types.')
-// 	});
-// 	return _.get(categories, 'data.categories');
-// }
+const fetchRestaurantCategories = () => async (dispatch) => {
+	let restaurantCategories = await ZomatoService.fetchRestaurantCategories().catch((e) => {
+		console.log('There was an error fetching categories or restaurant types.')
+	});
+
+	dispatch({
+		type: actionTypes.FETCH_CATEGORIES,
+		restaurantCategories: _.get(restaurantCategories, 'data.categories')
+	});
+}
 
 export default {
 	fetchRestaurantCollections,
-	// fetchCategories
+	fetchRestaurantCategories
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../store/actions/index';
-import ActionHelpers from '../../store/actions/actionHelpers';
+
+import Actions from '../../store/actions/actions';
 
 // Components
 import Banner from '../../hoc/Banner/Banner';
@@ -10,15 +10,10 @@ import Collections from '../../components/Collections/Collections';
 
 class Home extends Component{
 
-	state = {
-        
-    }
-
 	componentDidMount(){
 		let city = this.props.match.params.city;
-		
 		this.props.fetchRestaurantCollections(city);
-		// this.props.fetchCategories();
+		this.props.fetchRestaurantCategories();
 	}
 
 	render(){
@@ -35,8 +30,7 @@ class Home extends Component{
 }
 
 const mapStateToProps = state => {
-	console.log(JSON.stringify(state, undefined, 4));
-	console.log("---");
+	// console.log(JSON.stringify(state));
     return {
         restaurantCollections: state.zomatoReducer.restaurantCollections,
         categories: state.zomatoReducer.categories
@@ -45,8 +39,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchRestaurantCollections: (city) => dispatch(ActionHelpers.fetchRestaurantCollections(city)),
-        // fetchCategories: () => dispatch(ActionHelpers.fetchCategories())
+        fetchRestaurantCollections: (city) => dispatch(Actions.fetchRestaurantCollections(city)),
+        fetchRestaurantCategories: () => dispatch(Actions.fetchRestaurantCategories())
     }
 }
 
