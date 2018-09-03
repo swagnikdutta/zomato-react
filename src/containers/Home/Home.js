@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 import Actions from '../../store/actions/actions';
 
@@ -30,10 +31,9 @@ class Home extends Component{
 }
 
 const mapStateToProps = state => {
-	// console.log(JSON.stringify(state));
     return {
-        restaurantCollections: state.zomatoReducer.restaurantCollections,
-        categories: state.zomatoReducer.categories
+    	restaurantCollections: _.get(state, 'zomatoReducer.restaurantCollections.action.restaurantCollections', []),
+    	restaurantCategories: _.get(state, 'zomatoReducer.restaurantCategories.action.restaurantCategories', []),
     };
 }
 
