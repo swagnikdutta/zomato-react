@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Card from './Card/Card';
-import { Wrapper } from './Style.js';
+import { Wrapper, Heading, Subheading } from './Style.js';
 
 import _ from 'lodash';
 
@@ -17,7 +17,10 @@ const collections = (props) => {
 
 	return (
 		<Wrapper>
-			<h2>Collections</h2>
+			<div>
+				<Heading>Collections</Heading>
+				<Subheading>Explore curated lists of top restaurants, cafes, pubs, and bars in {props.city}, based on trends</Subheading>	
+			</div>
 			{restaurantCollections}
 		</Wrapper>
 	);

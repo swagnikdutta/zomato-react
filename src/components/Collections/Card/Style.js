@@ -7,7 +7,7 @@ export const CardWrapper = styled.div`
 		float: left;
 		margin-right: 2.5%;
 		margin-bottom: 2.5%;
-		box-shadow: 2px 2px 10px #E3E3E3;
+		box-shadow: 2px 2px 20px #E3E3E3;
 		position: relative;
 		cursor: pointer;
 		transition: box-shadow 500ms;
@@ -41,22 +41,20 @@ export const CardDetails = styled.div`
 `;
 
 export const Title = styled.p`
-	height: 27%;
 	font-weight: bold;
 	color: #505050;
 	margin-top: 0;
-	margin-bottom: 2%;
-	font-family: 'Open Sans', sans-serif;
-	border: 1px solid lightgrey;
+	margin-bottom: 3%;
+	font-family: 'Rubik', sans-serif;
 `;
 
 export const Description = styled.p`
-	height: 63%;
 	margin: 0;
 	font-size: 13px;
 	color: grey;
-	font-family: 'News Cycle', sans-serif;
-	border: 1px solid lightgrey;
+	font-family: 'Muli', sans-serif;
+	
+	// yet to be resolved
 	// text-overflow: ellipsis;
 	// overflow:hidden;
 `;

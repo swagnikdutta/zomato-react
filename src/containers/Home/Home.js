@@ -24,7 +24,7 @@ class Home extends Component{
 				<Banner>
 					<SearchUtility city={city} />
 				</Banner>
-				<Collections restaurantCollections={this.props.restaurantCollections} />
+				<Collections restaurantCollections={this.props.restaurantCollections} city={city} />
 			</div>
 		)
 	}
