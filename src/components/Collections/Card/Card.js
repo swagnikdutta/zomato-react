@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {CardWrapper, CardImage, CardDetails} from './Style';
+import {CardWrapper, CardImage, CardDetails, Title, Description} from './Style';
 
 const card = (props) => {
 
@@ -7,8 +7,8 @@ const card = (props) => {
 		<CardWrapper>
 			<CardImage imageLink={props.image_url} />
 			<CardDetails>
-				{props.title}
-
+				<Title>{props.title}</Title>
+				<Description>{props.description}</Description>
 			</CardDetails>
 		</CardWrapper>
 	);
