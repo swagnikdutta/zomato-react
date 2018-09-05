@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-	border: 1px solid red;
 	padding: 5% 6%; 
 	overflow: hidden;
+	background-color: #f1f5f7;
 `;
 
 export const Heading = styled.div`
