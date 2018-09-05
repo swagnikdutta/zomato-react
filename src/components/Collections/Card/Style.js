@@ -53,8 +53,7 @@ export const Description = styled.p`
 	font-size: 13px;
 	color: grey;
 	font-family: 'Muli', sans-serif;
-	
-	// yet to be resolved
-	// text-overflow: ellipsis;
-	// overflow:hidden;
+	white-space: pre; 
+	overflow: hidden;
+	text-overflow: ellipsis;
 `;
