@@ -3,8 +3,12 @@ import {CardWrapper, CardImage, CardDetails, Title, Description} from './Style';
 
 const card = (props) => {
 
+	let onCollectionCardClicked = () => {
+		window.location.href=`/${props.city}/collection/${props.collectionId}`;
+	};
+
 	return (
-		<CardWrapper>
+		<CardWrapper onClick={onCollectionCardClicked}>
 			<CardImage imageLink={props.image_url} />
 			<CardDetails>
 				<Title>{props.title}</Title>

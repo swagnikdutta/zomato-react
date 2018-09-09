@@ -7,7 +7,7 @@ export const CardWrapper = styled.div`
 		float: left;
 		margin-right: 2.5%;
 		margin-bottom: 2.5%;
-		box-shadow: 2px 2px 20px #E3E3E3;
+		box-shadow: 2px 2px 30px #D3D3D3;
 		position: relative;
 		cursor: pointer;
 		transition: box-shadow 500ms;

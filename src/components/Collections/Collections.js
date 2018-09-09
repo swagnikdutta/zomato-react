@@ -12,7 +12,7 @@ const collections = (props) => {
 			description 	= _.get(elem, 'collection.description'),
 			collectionId 	= _.get(elem, 'collection.collection_id');
 		
-		return <Card collectionId={collectionId} description={description} image_url={image_url} title={title} />
+		return <Card key={idx} collectionId={collectionId} description={description} image_url={image_url} title={title} city={props.city}/>
 	});
 
 	return (
