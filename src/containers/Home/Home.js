@@ -21,7 +21,7 @@ class Home extends Component{
 		let city = this.props.match.params.city;
 		return (
 			<div>
-				<Banner>
+				<Banner bannerOpacity={0.5}>
 					<SearchUtility city={city} />
 				</Banner>
 				<Collections restaurantCollections={this.props.restaurantCollections} city={city} />

@@ -1,12 +1,18 @@
 import React from 'react';
 
-import classes from './Banner.css';
+import { Banner, DarkFilter } from './Style';
 
-const banner = (props) => (
-	<div className={classes.Banner}>
-		<div className={classes.DarkFilter}></div>
-		{props.children}
-	</div>
-);
+const banner = (props) => {
+
+	let bannerImageUrl = props.bannerImageUrl,
+		bannerOpacity = props.bannerOpacity;
+
+	return(
+		<Banner bannerImageUrl={bannerImageUrl} >
+			<DarkFilter bannerOpacity={bannerOpacity} />
+			{props.children}
+		</Banner>
+	);
+}
 
 export default banner;
