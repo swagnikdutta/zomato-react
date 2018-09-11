@@ -8,7 +8,9 @@ const card = (props) => {
 	let navigateObj = {
 		pathname: `/${props.city}/collection/${props.collectionId}`,
 		state: {
-			bannerImageUrl: props.cardImageUrl
+			bannerImageUrl: props.cardImageUrl,
+			collectionTitle: props.title, 
+			collectionDescription: props.description
 		}
 	}
 

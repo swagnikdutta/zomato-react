@@ -5,6 +5,7 @@ import Actions from '../../store/actions/actions';
 
 //  Components
 import Banner from '../../hoc/Banner/Banner';
+import { Wrapper, BannerDetails, BannerWrapper, Title, Description } from './Style';
 
 class Collection extends Component{
 
@@ -13,13 +14,22 @@ class Collection extends Component{
 	}
 
 	render(){
-		let bannerImageUrl = this.props.location.state.bannerImageUrl;
+		let bannerImageUrl 			= this.props.location.state.bannerImageUrl,
+			collectionTitle 		= this.props.location.state.collectionTitle,
+			collectionDescription 	= this.props.location.state.collectionDescription,
+			bannerHeight 			= '300px';
+
 		return (
-			<div>
-				<Banner bannerImageUrl={bannerImageUrl} />
-				Banner description component here
-				This is Collection Component
-			</div>
+			<Wrapper>
+				<BannerWrapper>
+					<Banner bannerImageUrl={bannerImageUrl} bannerHeight={bannerHeight} />
+					<BannerDetails>
+						<Title>{collectionTitle}</Title>
+						<Description>{collectionDescription}</Description>
+					</BannerDetails>
+				</BannerWrapper>
+				
+			</Wrapper>
 		);
 	}
 
