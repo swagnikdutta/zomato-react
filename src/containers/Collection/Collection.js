@@ -7,10 +7,17 @@ import Actions from '../../store/actions/actions';
 import Banner from '../../hoc/Banner/Banner';
 import { Wrapper, BannerDetails, BannerWrapper, Title, Description } from './Style';
 
+const queryString = require('query-string');
+
 class Collection extends Component{
 
 	componentDidMount(){
-		let collectionId = this.props.match.params.collectionId;
+		let collectionId = this.props.match.params.collectionId,
+			searchQuery = queryString.stringify({
+				collection_id : collectionId
+			});
+
+		this.props.getFilteredRestaurants(searchQuery);
 	}
 
 	render(){
@@ -43,7 +50,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        // fetchRestaurantCollections: (city) => dispatch(Actions.fetchRestaurantCollections(city)),
+        getFilteredRestaurants: (searchQuery) => dispatch(Actions.getFilteredRestaurants(searchQuery)),
     }
 }
 

@@ -33,7 +33,19 @@ const fetchRestaurantCategories = () => async (dispatch) => {
 	});
 }
 
+const getFilteredRestaurants = (searchQuery) => async (dispatch) => {
+	let filteredRestaurants = await ZomatoService.getFilteredRestaurants(searchQuery).catch((e) => {
+		console.log('There was an error fetching filtered list of restaurants.');
+	});
+
+	// dispatch({
+	// 	type: actionTypes.FETCH_CATEGORIES,
+	// 	restaurantCategories: _.get(restaurantCategories, 'data.categories')
+	// });
+}
+
 export default {
 	fetchRestaurantCollections,
-	fetchRestaurantCategories
+	fetchRestaurantCategories,
+	getFilteredRestaurants
 }
