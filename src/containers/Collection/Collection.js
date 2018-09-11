@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 import Actions from '../../store/actions/actions';
 
@@ -17,7 +18,7 @@ class Collection extends Component{
 				collection_id : collectionId
 			});
 
-		this.props.getFilteredRestaurants(searchQuery);
+		this.props.fetchFilteredRestaurants(searchQuery);
 	}
 
 	render(){
@@ -35,7 +36,7 @@ class Collection extends Component{
 						<Description>{collectionDescription}</Description>
 					</BannerDetails>
 				</BannerWrapper>
-				
+				{JSON.stringify(this.props.filteredRestaurants)}
 			</Wrapper>
 		);
 	}
@@ -44,13 +45,13 @@ class Collection extends Component{
 
 const mapStateToProps = state => {
     return {
-    	// restaurantCollections: _.get(state, 'zomatoReducer.restaurantCollections.action.restaurantCollections', []),
+    	filteredRestaurants: _.get(state, 'zomatoReducer.filteredRestaurants.action.filteredRestaurants', []),
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        getFilteredRestaurants: (searchQuery) => dispatch(Actions.getFilteredRestaurants(searchQuery)),
+        fetchFilteredRestaurants: (searchQuery) => dispatch(Actions.fetchFilteredRestaurants(searchQuery)),
     }
 }
 

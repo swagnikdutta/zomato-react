@@ -4,6 +4,7 @@ import { updateObject } from '../utility';
 const initialState = {
 	restaurantCollections: [],
 	restaurantCategories: [],
+	filteredRestaurants: []
 };
 
 const fetchRestaurantCollections = (state, action) => {
@@ -15,7 +16,13 @@ const fetchRestaurantCollections = (state, action) => {
 const fetchRestaurantCategories = (state, action) => {
 	return updateObject(state, {
 		restaurantCategories: {action}
-	})
+	});
+}
+
+const fetchFilteredRestaurants = (state, action) => {
+	return updateObject(state, {
+		filteredRestaurants: {action}
+	});
 }
 
 const reducer = (state = initialState, action) => {
@@ -25,6 +32,9 @@ const reducer = (state = initialState, action) => {
 		}
 		case actionTypes.FETCH_CATEGORIES: {
 			return fetchRestaurantCategories(state, action);
+		}
+		case actionTypes.FETCH_FILTERED_RESTAURANTS: {
+			return fetchFilteredRestaurants(state, action);
 		}
 		default: return state;
 	}
