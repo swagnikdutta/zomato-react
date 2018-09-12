@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
+
 import Card from './Card/Card';
 import { Wrapper, Heading, Subheading } from './Style.js';
-
-import _ from 'lodash';
 
 const collections = (props) => {
 
 	let restaurantCollections = props.restaurantCollections.map((elem, idx) => {
 		let title 			= _.get(elem, 'collection.title'),
-			image_url 		= _.get(elem, 'collection.image_url'),
+			imageUrl 		= _.get(elem, 'collection.image_url'),
 			description 	= _.get(elem, 'collection.description'),
 			collectionId 	= _.get(elem, 'collection.collection_id');
 		
-		return <Card key={idx} collectionId={collectionId} description={description} cardImageUrl={image_url} title={title} city={props.city}/>
+		return <Card key={idx} collectionId={collectionId} description={description} cardImageUrl={imageUrl} title={title} city={props.city}/>
 	});
 
 	return (

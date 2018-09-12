@@ -1,19 +1,20 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-	width: 88%;
-	margin: auto;
+	padding: 4% 5%;
+	background-color: #F3F3F3;
 `;
 
 export const BannerWrapper = styled.div`
-	margin-top: 3em;
 	box-shadow: 2px 2px 10px lightgrey;
 	border-radius: 4px;
+	margin-bottom: 1.5rem;
 `;
 
 export const BannerDetails = styled.div`
 	color: #515151;
 	padding: 1rem;
+	background-color: #fff;
 `;
 
 export const Title = styled.p`

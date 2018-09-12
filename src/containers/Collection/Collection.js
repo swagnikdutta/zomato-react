@@ -6,6 +6,7 @@ import Actions from '../../store/actions/actions';
 
 //  Components
 import Banner from '../../hoc/Banner/Banner';
+import CollectedRestaurants from '../../components/CollectedRestaurants/CollectedRestaurants';
 import { Wrapper, BannerDetails, BannerWrapper, Title, Description } from './Style';
 
 const queryString = require('query-string');
@@ -36,11 +37,10 @@ class Collection extends Component{
 						<Description>{collectionDescription}</Description>
 					</BannerDetails>
 				</BannerWrapper>
-				{JSON.stringify(this.props.filteredRestaurants)}
+				<CollectedRestaurants restaurants={this.props.filteredRestaurants}></CollectedRestaurants>
 			</Wrapper>
 		);
 	}
-
 }
 
 const mapStateToProps = state => {
