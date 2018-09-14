@@ -15,7 +15,7 @@ export const BannerDetails = styled.div`
 	color: #515151;
 	padding: 1rem;
 	background-color: #fff;
-	border-left: 1px solid #E7E7E7;
+	border-left: 1px solid #fff;
 	border-radius: 0 0 4px 4px;
 `;
 

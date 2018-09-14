@@ -37,9 +37,9 @@ export const Rating = styled.div`
 export const CardDetails = styled.div`
 	border-radius: 0 0 4px 4px;
 	background-color: #fff;
-	border-right: 1px solid #E7E7E7;
-	border-bottom: 1px solid #E7E7E7;
-	border-left: 1px solid #E7E7E7;
+	border-right: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	border-left: 1px solid #fff;
 	height: 40%;
 	padding: 2.5%;
 `;
