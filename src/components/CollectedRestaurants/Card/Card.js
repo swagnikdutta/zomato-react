@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import { CardWrapper, CardImage, CardDetails, Name, Cuisine, Address } from './Style';
+import { CardWrapper, CardImage, CardDetails, Name, Cuisine, Address, Rating } from './Style';
 
 const card = (props) => {
 	
@@ -20,7 +20,7 @@ const card = (props) => {
 	return (
 		<CardWrapper>
 			<CardImage imageLink={props.cardImageUrl}>
-
+				<Rating ratingColor={props.ratingColor}>{props.aggregateRating}</Rating>
 			</CardImage>
 			<CardDetails>
 				<Name>{props.restaurantName}</Name>

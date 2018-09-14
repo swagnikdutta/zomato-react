@@ -23,6 +23,16 @@ export const CardImage = styled.div`
 	border-radius: 4px 4px 0 0;
 `;
 
+export const Rating = styled.div`
+	color: white;
+	float: right;
+	background-color: ${props => `#${props.ratingColor}` };
+	border-radius: 0 4px 0 4px;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 4px 10px;
+`;
+
 export const CardDetails = styled.div`
 	border-radius: 0 0 4px 4px;
 	background-color: #fff;
