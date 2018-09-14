@@ -26,6 +26,7 @@ class Collection extends Component{
 		let bannerImageUrl 			= this.props.location.state.bannerImageUrl,
 			collectionTitle 		= this.props.location.state.collectionTitle,
 			collectionDescription 	= this.props.location.state.collectionDescription,
+			city					= this.props.match.params.city,
 			bannerHeight 			= '300px';
 
 		return (
@@ -37,7 +38,7 @@ class Collection extends Component{
 						<Description>{collectionDescription}</Description>
 					</BannerDetails>
 				</BannerWrapper>
-				<CollectedRestaurants restaurants={this.props.filteredRestaurants}></CollectedRestaurants>
+				<CollectedRestaurants city={city} restaurants={this.props.filteredRestaurants}></CollectedRestaurants>
 			</Wrapper>
 		);
 	}

@@ -6,6 +6,7 @@ import { Wrapper, ListWrapper } from './Style.js';
 
 const collectedRestaurants = (props) => {
 	
+	let city = props.city;
 	let collectedRestaurants = props.restaurants.map((elem, idx) => {
 		let imageUrl 		= _.get(elem, 'restaurant.featured_image'),
 			cuisines		= _.get(elem, 'restaurant.cuisines'),
@@ -16,6 +17,7 @@ const collectedRestaurants = (props) => {
 			restaurantId	= _.get(elem, 'restaurant.id');
 
 		return <Card key={idx} 
+					city={city}
 					cardImageUrl={imageUrl} 
 					cuisines={cuisines} 
 					ratingColor={ratingColor} 
