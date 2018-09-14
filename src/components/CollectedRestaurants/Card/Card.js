@@ -12,7 +12,7 @@ const card = (props) => {
 
 	return (
 		<CardWrapper>
-			<Link to={navigateObj}>
+			<Link to={navigateObj} style={{ textDecoration: 'none' }}>
 				<CardImage imageLink={props.cardImageUrl}>
 					<Rating ratingColor={props.ratingColor}>{props.aggregateRating}</Rating>
 				</CardImage>
