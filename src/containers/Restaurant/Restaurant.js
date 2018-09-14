@@ -10,14 +10,17 @@ import Banner from '../../hoc/Banner/Banner';
 class Restaurant extends Component{
 
 	componentDidMount(){
-		// let city = this.props.match.params.city;
-		// this.props.fetchRestaurantCollections(city);
+		let restaurantId = this.props.match.params.restaurantId;
+		this.props.fetchRestaurantDetails(restaurantId);
 	}
 
 	render(){
 		return (
 			<div>
 				Restaurant component
+				<div>
+					{JSON.stringify(this.props.restaurantDetails)}	
+				</div>
 			</div>
 		);
 	}
@@ -25,13 +28,13 @@ class Restaurant extends Component{
 
 const mapStateToProps = state => {
     return {
-    	// filteredRestaurants: _.get(state, 'zomatoReducer.filteredRestaurants.action.filteredRestaurants', []),
+    	restaurantDetails: _.get(state, 'zomatoReducer.restaurantDetails.action.restaurantDetails', []),
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        // fetchFilteredRestaurants: (searchQuery) => dispatch(Actions.fetchFilteredRestaurants(searchQuery)),
+        fetchRestaurantDetails: (restaurantId) => dispatch(Actions.fetchRestaurantDetails(restaurantId)),
     }
 }
 
