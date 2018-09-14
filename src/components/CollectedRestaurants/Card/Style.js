@@ -10,6 +10,7 @@ export const CardWrapper = styled.div`
 		margin-bottom: 2%;
 		border-radius: 4px;
 		cursor: pointer;
+		box-shadow: 2px 2px 30px #D3D3D3;
 	}
 	&:nth-child(3n){
 		margin-right: 0;

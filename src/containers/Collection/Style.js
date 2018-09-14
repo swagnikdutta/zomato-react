@@ -6,15 +6,17 @@ export const Wrapper = styled.div`
 `;
 
 export const BannerWrapper = styled.div`
-	box-shadow: 2px 2px 10px lightgrey;
+	box-shadow: 2px 2px 15px lightgrey;
 	border-radius: 4px;
-	margin-bottom: 1.5rem;
+	margin-bottom: 2rem;
 `;
 
 export const BannerDetails = styled.div`
 	color: #515151;
 	padding: 1rem;
 	background-color: #fff;
+	border-left: 1px solid #E7E7E7;
+	border-radius: 0 0 4px 4px;
 `;
 
 export const Title = styled.p`
