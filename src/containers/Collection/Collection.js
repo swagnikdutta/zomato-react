@@ -46,7 +46,7 @@ class Collection extends Component{
 
 const mapStateToProps = state => {
     return {
-    	filteredRestaurants: _.get(state, 'zomatoReducer.filteredRestaurants.action.filteredRestaurants', []),
+    	filteredRestaurants: _.get(state, 'zomatoReducer.filteredRestaurants', []),
     };
 }
 

@@ -19,6 +19,7 @@ class Restaurant extends Component{
 
 	render(){
 		let restaurantDetails 		= this.props.restaurantDetails,
+			restaurantReviews		= this.props.restaurantReviews,
 			restaurantName 			= _.get(restaurantDetails, 'name', ''),
 			restaurantLocation 		= _.get(restaurantDetails, 'location.locality_verbose', ''),
 			bannerImageUrl			= _.get(restaurantDetails, 'featured_image', ''),
@@ -45,7 +46,6 @@ class Restaurant extends Component{
 						</div>
 					</BannerDetails>
 				</BannerWrapper>
-
 			</Wrapper>
 		);
 	}
@@ -53,13 +53,14 @@ class Restaurant extends Component{
 
 const mapStateToProps = state => {
     return {
-    	restaurantDetails: _.get(state, 'zomatoReducer.restaurantDetails.action.restaurantDetails', []),
+    	restaurantDetails: _.get(state, 'zomatoReducer.restaurantDetails', {}),
+    	restaurantReviews: _.get(state, 'zomatoReducer.restaurantReviews', {}),
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchRestaurantDetails: (restaurantId) => dispatch(Actions.fetchRestaurantDetails(restaurantId)),
+        fetchRestaurantDetails: (restaurantId) => dispatch(Actions.fetchRestaurantDetails(restaurantId))
     }
 }
 

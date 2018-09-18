@@ -32,8 +32,8 @@ class Home extends Component{
 
 const mapStateToProps = state => {
     return {
-    	restaurantCollections: _.get(state, 'zomatoReducer.restaurantCollections.action.restaurantCollections', []),
-    	restaurantCategories: _.get(state, 'zomatoReducer.restaurantCategories.action.restaurantCategories', []),
+    	restaurantCollections: _.get(state, 'zomatoReducer.restaurantCollections', []),
+    	restaurantCategories: _.get(state, 'zomatoReducer.restaurantCategories', []),
     };
 }
 

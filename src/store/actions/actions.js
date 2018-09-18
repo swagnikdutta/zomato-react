@@ -45,13 +45,19 @@ const fetchFilteredRestaurants = (searchQuery) => async (dispatch) => {
 }
 
 const fetchRestaurantDetails = (restaurantId) => async (dispatch) => {
-	let restaurantDetails = await ZomatoService.fetchRestaurantDetails(restaurantId).catch((e) => {
+	const restaurantDetailsPromise = ZomatoService.fetchRestaurantDetails(restaurantId).catch((e) => {
 		console.log(`There was an error fetching restaurant details. Restaurant Id: ${restaurantId}`);
+	});
+	const restaurantReviewsPromise = ZomatoService.fetchRestaurantReviews(restaurantId).catch((e) => {
+		console.log(`There was an error fetching restaurant reviews. Restaurant Id: ${restaurantId}`);
 	});
 
 	dispatch({
 		type: actionTypes.FETCH_RESTAURANT_DETAILS,
-		restaurantDetails: _.get(restaurantDetails, 'data')
+		data: {
+			restaurantDetails: _.get(await restaurantDetailsPromise, 'data'),
+			restaurantReviews: _.get(await restaurantReviewsPromise, 'data'),
+		}
 	});
 }
 
@@ -59,5 +65,5 @@ export default {
 	fetchRestaurantCollections,
 	fetchRestaurantCategories,
 	fetchFilteredRestaurants,
-	fetchRestaurantDetails
+	fetchRestaurantDetails,
 }

@@ -5,30 +5,32 @@ const initialState = {
 	restaurantCollections: [],
 	restaurantCategories: [],
 	filteredRestaurants: [],
-	restaurantDetails: {}
+	restaurantDetails: {},
+	restaurantReviews: {}
 };
 
 const fetchRestaurantCollections = (state, action) => {
 	return updateObject(state, {
-		restaurantCollections: {action}
+		restaurantCollections: action.restaurantCollections
 	});
 }
 
 const fetchRestaurantCategories = (state, action) => {
 	return updateObject(state, {
-		restaurantCategories: {action}
+		restaurantCategories: action.restaurantCategories
 	});
 }
 
 const fetchFilteredRestaurants = (state, action) => {
 	return updateObject(state, {
-		filteredRestaurants: {action}
+		filteredRestaurants: action.filteredRestaurants
 	});
 }
 
 const fetchRestaurantDetails = (state, action) => {
 	return updateObject(state, {
-		restaurantDetails: {action}
+		restaurantDetails: action.data.restaurantDetails,
+		restaurantReviews: action.data.restaurantReviews,
 	});
 }
 
