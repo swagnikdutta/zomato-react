@@ -4,8 +4,11 @@ import _ from 'lodash';
 
 import Actions from '../../store/actions/actions';
 
+import classes from './Style.css';
+
 // Components
 import Banner from '../../hoc/Banner/Banner';
+import { Wrapper, BannerWrapper, BannerDetails, Title, Description, Rating } from './Style';
 
 class Restaurant extends Component{
 
@@ -15,13 +18,35 @@ class Restaurant extends Component{
 	}
 
 	render(){
+		let restaurantDetails 		= this.props.restaurantDetails,
+			restaurantName 			= _.get(restaurantDetails, 'name', ''),
+			restaurantLocation 		= _.get(restaurantDetails, 'location.locality_verbose', ''),
+			bannerImageUrl			= _.get(restaurantDetails, 'featured_image', ''),
+			cuisines 				= _.get(restaurantDetails, 'cuisines', ''),
+			voteCount				= _.get(restaurantDetails, 'user_rating.votes', ''),
+			ratingColor 			= _.get(restaurantDetails, 'user_rating.rating_color', ''),
+			aggregateRating 		= _.get(restaurantDetails, 'user_rating.aggregate_rating', '');
+
 		return (
-			<div>
-				Restaurant component
-				<div>
-					{JSON.stringify(this.props.restaurantDetails)}	
-				</div>
-			</div>
+			<Wrapper>
+				<BannerWrapper>
+					<Banner bannerImageUrl={bannerImageUrl} bannerHeight={'300px'} />
+					<BannerDetails>
+						<Title>{restaurantName}</Title>
+						<Description>
+							{restaurantLocation}&emsp;{cuisines}
+						</Description>
+
+						<div className={classes.RatingWrapper}>
+							<Rating ratingColor={ratingColor}>
+								{aggregateRating}<span className={classes.MaxRating}>/5</span>
+							</Rating>
+							<div className={classes.VoteCount}>{voteCount} votes</div>
+						</div>
+					</BannerDetails>
+				</BannerWrapper>
+
+			</Wrapper>
 		);
 	}
 }
