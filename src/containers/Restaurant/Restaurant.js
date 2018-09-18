@@ -31,7 +31,7 @@ class Restaurant extends Component{
 		return (
 			<Wrapper>
 				<BannerWrapper>
-					<Banner bannerImageUrl={bannerImageUrl} bannerHeight={'300px'} />
+					<Banner bannerImageUrl={bannerImageUrl} bannerHeight={'350px'} />
 					<BannerDetails>
 						<Title>{restaurantName}</Title>
 						<Description>

@@ -22,7 +22,6 @@ export const BannerDetails = styled.div`
 export const Title = styled.p`
 	font-size: 1.8rem;
 	margin: 0;
-	font-family: 'Rubik', sans-serif;
 	font-weight: bold;
 `;
 

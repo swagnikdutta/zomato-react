@@ -10,15 +10,15 @@ export const CardWrapper = styled.div`
 		box-shadow: 2px 2px 30px #D3D3D3;
 		position: relative;
 		cursor: pointer;
-		transition: box-shadow 500ms;
+		transition: box-shadow 300ms;
 		border-radius: 4px;
 	}
 	&:nth-child(3n+1){
 		margin-right: 0;
 	}
 	&:hover{
-		box-shadow: 1px 1px 1px #E3E3E3;
-		transition: box-shadow 500ms;
+		box-shadow: 1px 1px 1px #BBBBBB;
+		transition: box-shadow 300ms;
 	}
 `;
 
@@ -45,7 +45,6 @@ export const Title = styled.p`
 	color: #505050;
 	margin-top: 0;
 	margin-bottom: 3%;
-	font-family: 'Rubik', sans-serif;
 `;
 
 export const Description = styled.p`

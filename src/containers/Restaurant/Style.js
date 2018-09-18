@@ -22,7 +22,6 @@ export const BannerDetails = styled.div`
 export const Title = styled.p`
 	font-size: 1.8rem;
 	margin: 0;
-	font-family: 'Rubik', sans-serif;
 	font-weight: bold;
 `;
 
@@ -37,7 +36,6 @@ export const Rating = styled.div`
 	font-size: 2rem;
 	padding: 0.3rem;
 	font-weight: bold;
-	font-family: 'Rubik', sans-serif;
 	color: #fff;
 	border-radius: 4px;
 	text-align: center;

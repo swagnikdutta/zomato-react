@@ -48,7 +48,6 @@ export const Name = styled.p`
 	margin: 0 0 4px 0;
 	font-weight: bold;
 	color: #505050;
-	font-family: 'Rubik', sans-serif;
 `;
 
 export const Address = styled.p`
