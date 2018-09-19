@@ -10,7 +10,6 @@ export const CardWrapper = styled.div`
 		margin-bottom: 2%;
 		border-radius: 4px;
 		cursor: pointer;
-		box-shadow: 2px 2px 30px #D3D3D3;
 	}
 	&:nth-child(3n){
 		margin-right: 0;
@@ -37,9 +36,9 @@ export const Rating = styled.div`
 export const CardDetails = styled.div`
 	border-radius: 0 0 4px 4px;
 	background-color: #fff;
-	border-right: 1px solid #fff;
-	border-bottom: 1px solid #fff;
-	border-left: 1px solid #fff;
+	border-right: 1px solid #C8C8C8;
+	border-bottom: 1px solid #C8C8C8;
+	border-left: 1px solid #C8C8C8;
 	height: 40%;
 	padding: 2.5%;
 `;
