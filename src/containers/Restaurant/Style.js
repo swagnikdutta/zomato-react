@@ -5,7 +5,9 @@ export const Wrapper = styled.div`
 `;
 
 export const BannerWrapper = styled.div`
-	box-shadow: 2px 2px 15px lightgrey;
+	box-shadow: 2px 2px 30px #C8C8C8;
+	border-right: 1px solid #C8C8C8;
+	border-bottom: 1px solid #C8C8C8;
 	border-radius: 4px;
 	margin-bottom: 2rem;
 `;
