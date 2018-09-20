@@ -8,6 +8,8 @@ import classes from './Style.css';
 
 // Components
 import Banner from '../../hoc/Banner/Banner';
+import Overview from '../../components/Restaurant/Overview/Overview';
+import Reviews from '../../components/Restaurant/Reviews/Reviews';
 import { Wrapper, BannerWrapper, BannerDetails, Title, Description, Rating } from './Style';
 
 class Restaurant extends Component{
@@ -46,6 +48,8 @@ class Restaurant extends Component{
 						</div>
 					</BannerDetails>
 				</BannerWrapper>
+				<Overview restaurantDetails={restaurantDetails} />
+				<Reviews restaurantReviews={restaurantReviews} />
 			</Wrapper>
 		);
 	}
