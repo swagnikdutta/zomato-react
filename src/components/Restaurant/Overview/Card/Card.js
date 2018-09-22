@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 
+import classes from './Style.css';
+
 import { Wrapper, IconWrapper, Detail } from './Style';
 
 const card = (props) => {
-	console.log(props)
 	return (
 		<Wrapper>
 			<IconWrapper>
-				<i className={`fas icon_${props.infoKey} ${props.iconClass}`}></i>
+				<i className={`${props.iconClass} ` + classes[`icon_${props.infoKey}`] }></i>
 			</IconWrapper>
 			<Detail>
 				{props.infoValue}

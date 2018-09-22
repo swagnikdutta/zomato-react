@@ -1,0 +1,29 @@
+.icon_location{
+	color: #ef5350;
+	font-size: 2em;
+}
+
+.icon_cuisines{
+	color: #7986cb;
+	font-size: 2em;
+}
+
+.icon_average_cost_for_two{
+	color: #81c784;
+	font-size: 2em;
+}
+
+.icon_has_online_delivery{
+	color: #ff9800;
+	font-size: 2em;
+}
+
+.icon_is_table_reservation_supported{
+	color: #00bcd4;
+	font-size: 2em;
+}
+
+.icon_has_table_booking{
+	color: #ff9e80;
+	font-size: 2em;
+}
