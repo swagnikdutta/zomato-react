@@ -11,23 +11,27 @@ const masterConfig = {
 		average_cost_for_two: {
 			fa_icon: 'fas fa-money-bill-wave',
 			path: 'average_cost_for_two',
-			extraData: {
-				currency: {
-					path: 'currency'
-				}
-			}
+			extraData: [{
+				insertAt: 'end',
+				message: ' for two people (approx.)'
+			}, {
+				insertAt: 'start',
+				path: 'currency',
+			}]
 		},
 		has_online_delivery: {
 			fa_icon: 'fas fa-motorcycle',
 			path: 'has_online_delivery',
+			isBoolean: true,
+			messageOnTruthyValue: 'Online delivery Available',
+			messageOnFalsyValue: 'Online delivery Unavailable',
 		},
 		is_table_reservation_supported: {
 			fa_icon: 'far fa-calendar-check',
 			path: 'is_table_reservation_supported',
-		},
-		has_table_booking: {
-			fa_icon: 'fas fa-map-marker',
-			path: 'has_table_booking',
+			isBoolean: true,
+			messageOnTruthyValue: 'Table reservation Available',
+			messageOnFalsyValue: 'Table reservation Unavailable',
 		}
 	},
 	reviews: {
