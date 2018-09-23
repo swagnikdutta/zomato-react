@@ -6,9 +6,7 @@ import Card from './Card/Card';
 import { Wrapper } from './Style.js';
 
 // config
-import { 
-	common as commonConfig,
-	reviews as reviewsConfig } from '../../../config/RestaurantConfig';
+import { common as commonConfig } from '../../../config/RestaurantConfig';
 
 const overview = (props) => {
 

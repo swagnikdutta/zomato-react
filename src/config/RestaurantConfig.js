@@ -31,7 +31,24 @@ const masterConfig = {
 		}
 	},
 	reviews: {
-
+		rating: {
+			path: 'rating'
+		},
+		review_text: {
+			path: 'review_text'
+		},
+		rating_color: {
+			path: 'rating_color'
+		},
+		rating_text: {
+			path: 'rating_text'
+		},
+		name: {
+			path: 'user.name'
+		},
+		profile_image: {
+			path: 'user.profile_image'
+		}
 	}
 };
 
