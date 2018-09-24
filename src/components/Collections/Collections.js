@@ -12,7 +12,13 @@ const collections = (props) => {
 			description 	= _.get(elem, 'collection.description'),
 			collectionId 	= _.get(elem, 'collection.collection_id');
 		
-		return <Card key={idx} collectionId={collectionId} description={description} cardImageUrl={imageUrl} title={title} city={props.city}/>
+		return <Card key={idx} 
+					collectionId={collectionId} 
+					description={description} 
+					cardImageUrl={imageUrl} 
+					title={title} 
+					city={props.city}
+					restaurantCollections={props.restaurantCollections} />
 	});
 
 	return (

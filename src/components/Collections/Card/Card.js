@@ -10,7 +10,8 @@ const card = (props) => {
 		state: {
 			bannerImageUrl: props.cardImageUrl,
 			collectionTitle: props.title, 
-			collectionDescription: props.description
+			collectionDescription: props.description,
+			restaurantCollections: props.restaurantCollections
 		}
 	}
 
