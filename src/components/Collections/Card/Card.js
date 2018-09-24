@@ -16,10 +16,10 @@ const card = (props) => {
 	}
 
 	return (
-		<CardWrapper>
+		<CardWrapper renderSource={props.renderSource}>
 			<Link to={navigateObj}>
 				<CardImage imageLink={props.cardImageUrl} />
-				<CardDetails>
+				<CardDetails renderSource={props.renderSource}>
 					<Title>{props.title}</Title>
 					<Description>{props.description}</Description>
 				</CardDetails>

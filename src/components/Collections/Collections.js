@@ -18,11 +18,12 @@ const collections = (props) => {
 					cardImageUrl={imageUrl} 
 					title={title} 
 					city={props.city}
-					restaurantCollections={props.restaurantCollections} />
+					restaurantCollections={props.restaurantCollections}
+					renderSource={props.renderSource} />
 	});
 
 	return (
-		<Wrapper padding={props.padding}>
+		<Wrapper renderSource={props.renderSource}>
 			<div>
 				<Heading>Collections</Heading>
 				<Subheading>Explore curated lists of top restaurants, cafes, pubs, and bars in {props.city}, based on trends</Subheading>	
