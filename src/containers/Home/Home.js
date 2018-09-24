@@ -24,7 +24,7 @@ class Home extends Component{
 				<Banner bannerOpacity={0.5}>
 					<SearchUtility city={city} />
 				</Banner>
-				<Collections restaurantCollections={this.props.restaurantCollections} city={city} />
+				<Collections restaurantCollections={this.props.restaurantCollections} city={city} padding={true} />
 			</div>
 		)
 	}

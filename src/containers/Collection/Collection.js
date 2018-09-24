@@ -41,7 +41,7 @@ class Collection extends Component{
 					</BannerDetails>
 				</BannerWrapper>
 				<CollectedRestaurants city={city} restaurants={this.props.filteredRestaurants}></CollectedRestaurants>
-				<Collections restaurantCollections={restaurantCollections} city={city} />
+				<Collections restaurantCollections={restaurantCollections} city={city} padding={false} />
 			</Wrapper>
 		);
 	}

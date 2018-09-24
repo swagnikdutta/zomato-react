@@ -22,7 +22,7 @@ const collections = (props) => {
 	});
 
 	return (
-		<Wrapper>
+		<Wrapper padding={props.padding}>
 			<div>
 				<Heading>Collections</Heading>
 				<Subheading>Explore curated lists of top restaurants, cafes, pubs, and bars in {props.city}, based on trends</Subheading>	

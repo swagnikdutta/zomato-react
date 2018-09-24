@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-	padding: 5% 6%; 
+	padding: ${props => props.padding ? '5% 6%' : '5% 0'};
 	overflow: hidden;
 `;
 
