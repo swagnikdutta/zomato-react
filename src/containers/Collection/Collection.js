@@ -13,17 +13,38 @@ import { Wrapper, BannerDetails, BannerWrapper, Title, Description } from './Sty
 const queryString = require('query-string');
 
 class Collection extends Component{
+	constructor(props){
+		super(props);
+		this.state = {
+			collectionId: 0
+		}
+	}
 
 	componentDidMount(){
-		let collectionId = this.props.match.params.collectionId,
-			searchQuery = queryString.stringify({
-				collection_id : collectionId
+		// debugger;
+		this.setState({
+			collectionId: this.props.match.params.collectionId
+		}, () => {
+			// debugger;
+			let searchQuery = queryString.stringify({
+				collection_id : this.state.collectionId
 			});
+			this.props.fetchFilteredRestaurants(searchQuery);
+		});
+	}
 
-		this.props.fetchFilteredRestaurants(searchQuery);
+	componentWillReceiveProps(newProps){
+		// debugger;
+		if(this.state.collectionId !== newProps.match.params.collectionId){
+			let searchQuery = queryString.stringify({
+				collection_id : newProps.match.params.collectionId
+			});
+			this.props.fetchFilteredRestaurants(searchQuery);
+		}
 	}
 
 	render(){
+		// window.scrollTo(0, 0);
 		let bannerImageUrl 			= this.props.location.state.bannerImageUrl,
 			collectionTitle 		= this.props.location.state.collectionTitle,
 			collectionDescription 	= this.props.location.state.collectionDescription,
