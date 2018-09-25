@@ -16,35 +16,23 @@ class Collection extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			collectionId: 0
+			collectionId: null
 		}
 	}
 
 	componentDidMount(){
-		// debugger;
-		this.setState({
-			collectionId: this.props.match.params.collectionId
-		}, () => {
-			// debugger;
-			let searchQuery = queryString.stringify({
-				collection_id : this.state.collectionId
-			});
-			this.props.fetchFilteredRestaurants(searchQuery);
-		});
+		let collectionId = this.props.match.params.collectionId;
+		updateStateWithCollectionId(this, collectionId);
 	}
 
 	componentWillReceiveProps(newProps){
-		// debugger;
-		if(this.state.collectionId !== newProps.match.params.collectionId){
-			let searchQuery = queryString.stringify({
-				collection_id : newProps.match.params.collectionId
-			});
-			this.props.fetchFilteredRestaurants(searchQuery);
+		let newCollectionId = newProps.match.params.collectionId;
+		if(this.state.collectionId !== newCollectionId){
+			updateStateWithCollectionId(this, newCollectionId);
 		}
 	}
 
 	render(){
-		// window.scrollTo(0, 0);
 		let bannerImageUrl 			= this.props.location.state.bannerImageUrl,
 			collectionTitle 		= this.props.location.state.collectionTitle,
 			collectionDescription 	= this.props.location.state.collectionDescription,
@@ -66,6 +54,17 @@ class Collection extends Component{
 			</Wrapper>
 		);
 	}
+}
+
+const updateStateWithCollectionId = (scope, id) => {
+	scope.setState({
+		collectionId: id
+	}, () => {
+		let searchQuery = queryString.stringify({
+			collection_id: scope.state.collectionId
+		});
+		scope.props.fetchFilteredRestaurants(searchQuery);
+	});
 }
 
 const mapStateToProps = state => {
