@@ -10,15 +10,16 @@ const card = (props) => {
 		state: {
 			bannerImageUrl: props.cardImageUrl,
 			collectionTitle: props.title, 
-			collectionDescription: props.description
+			collectionDescription: props.description,
+			restaurantCollections: props.restaurantCollections
 		}
 	}
 
 	return (
-		<CardWrapper>
+		<CardWrapper renderSource={props.renderSource}>
 			<Link to={navigateObj}>
 				<CardImage imageLink={props.cardImageUrl} />
-				<CardDetails>
+				<CardDetails renderSource={props.renderSource}>
 					<Title>{props.title}</Title>
 					<Description>{props.description}</Description>
 				</CardDetails>

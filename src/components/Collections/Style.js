@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-	padding: 5% 6%; 
+	padding: ${props => props.renderSource === 'Home' ? '5% 6%' : '2% 0'};
 	overflow: hidden;
 `;
 

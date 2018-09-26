@@ -12,11 +12,18 @@ const collections = (props) => {
 			description 	= _.get(elem, 'collection.description'),
 			collectionId 	= _.get(elem, 'collection.collection_id');
 		
-		return <Card key={idx} collectionId={collectionId} description={description} cardImageUrl={imageUrl} title={title} city={props.city}/>
+		return <Card key={idx} 
+					collectionId={collectionId} 
+					description={description} 
+					cardImageUrl={imageUrl} 
+					title={title} 
+					city={props.city}
+					restaurantCollections={props.restaurantCollections}
+					renderSource={props.renderSource} />
 	});
 
 	return (
-		<Wrapper>
+		<Wrapper renderSource={props.renderSource}>
 			<div>
 				<Heading>Collections</Heading>
 				<Subheading>Explore curated lists of top restaurants, cafes, pubs, and bars in {props.city}, based on trends</Subheading>	

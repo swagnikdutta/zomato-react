@@ -32,10 +32,6 @@ const collectedRestaurants = (props) => {
 			<ListWrapper>
 				{collectedRestaurants}
 			</ListWrapper>
-			
-			<div>
-				Here we will show all the other available collections
-			</div>
 		</Wrapper>
 	);
 }

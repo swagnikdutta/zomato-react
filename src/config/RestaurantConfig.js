@@ -23,15 +23,15 @@ const masterConfig = {
 			fa_icon: 'fas fa-motorcycle',
 			path: 'has_online_delivery',
 			isBoolean: true,
-			messageOnTruthyValue: 'Online delivery Available',
-			messageOnFalsyValue: 'Online delivery Unavailable',
+			messageOnTruthyValue: 'Online Delivery Available',
+			messageOnFalsyValue: 'Online Delivery Unavailable',
 		},
 		is_table_reservation_supported: {
 			fa_icon: 'far fa-calendar-check',
 			path: 'is_table_reservation_supported',
 			isBoolean: true,
-			messageOnTruthyValue: 'Table reservation Available',
-			messageOnFalsyValue: 'Table reservation Unavailable',
+			messageOnTruthyValue: 'Table Reservation Available',
+			messageOnFalsyValue: 'Table Reservation Unavailable',
 		}
 	},
 	reviews: {
