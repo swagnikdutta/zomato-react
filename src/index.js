@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 
 import './index.css';
 import App from './App';
+import ScrollToTop from './hoc/ScrollToTop/ScrollToTop';
 import zomatoReducer from './store/reducers/index';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -22,7 +23,9 @@ const store = createStore(rootReducer, composeEnhancers(
 const app = (
     <Provider store={store}>
         <BrowserRouter>
-            <App />
+        	<ScrollToTop>
+            	<App />
+            </ScrollToTop>
         </BrowserRouter>
     </Provider>
 );
