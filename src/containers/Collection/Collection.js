@@ -10,8 +10,6 @@ import CollectedRestaurants from '../../components/CollectedRestaurants/Collecte
 import Collections from '../../components/Collections/Collections';
 import { Wrapper, BannerDetails, BannerWrapper, Title, Description } from './Style';
 
-const queryString = require('query-string');
-
 class Collection extends Component{
 	constructor(props){
 		super(props);
@@ -21,22 +19,26 @@ class Collection extends Component{
 	}
 
 	componentDidMount(){
-		let collectionId = this.props.match.params.collectionId;
-		updateStateWithCollectionId(this, collectionId);
+		let collectionId = this.props.match.params.collectionId,
+			city = this.props.match.params.city;
+
+		updateStateWithCollectionId(this, collectionId, city);
 	}
 
 	componentWillReceiveProps(newProps){
-		let newCollectionId = newProps.match.params.collectionId;
+		let newCollectionId = newProps.match.params.collectionId,
+			city = newProps.match.params.city;
+
 		if(this.state.collectionId !== newCollectionId){
-			updateStateWithCollectionId(this, newCollectionId);
+			updateStateWithCollectionId(this, newCollectionId, city);
 		}
 	}
 
 	render(){
-		let bannerImageUrl 			= this.props.location.state.bannerImageUrl,
-			collectionTitle 		= this.props.location.state.collectionTitle,
-			collectionDescription 	= this.props.location.state.collectionDescription,
-			restaurantCollections	= this.props.location.state.restaurantCollections,
+		let bannerImageUrl 			= _.get(this.props, 'location.state.bannerImageUrl', ''),
+			collectionTitle 		= _.get(this.props, 'location.state.collectionTitle', ''),
+			collectionDescription 	= _.get(this.props, 'location.state.collectionDescription', ''),
+			restaurantCollections	= _.get(this.props, 'location.state.restaurantCollections', []),
 			city					= this.props.match.params.city,
 			bannerHeight 			= '300px';
 
@@ -56,14 +58,16 @@ class Collection extends Component{
 	}
 }
 
-const updateStateWithCollectionId = (scope, id) => {
+const updateStateWithCollectionId = (scope, id, city) => {
 	scope.setState({
 		collectionId: id
 	}, () => {
-		let searchQuery = queryString.stringify({
-			collection_id: scope.state.collectionId
-		});
-		scope.props.fetchFilteredRestaurants(searchQuery);
+		let filterParams = {
+			collection_id: scope.state.collectionId,
+			entity_type: 'city',
+			city
+		};
+		scope.props.fetchFilteredRestaurants(filterParams);
 	});
 }
 
@@ -75,7 +79,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchFilteredRestaurants: (searchQuery) => dispatch(Actions.fetchFilteredRestaurants(searchQuery)),
+        fetchFilteredRestaurants: (filterParams) => dispatch(Actions.fetchFilteredRestaurants(filterParams)),
     }
 }
 
