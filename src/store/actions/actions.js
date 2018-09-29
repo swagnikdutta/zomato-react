@@ -2,6 +2,7 @@ import ZomatoService from '../../services/ZomatoService';
 import * as actionTypes from './actionTypes';
 
 const _ = require('lodash');
+const queryString = require('query-string');
 
 const fetchRestaurantCollections = (city) => async (dispatch) => {
 	let	cityId, 
@@ -33,7 +34,21 @@ const fetchRestaurantCategories = () => async (dispatch) => {
 	});
 }
 
-const fetchFilteredRestaurants = (searchQuery) => async (dispatch) => {
+const fetchFilteredRestaurants = (filterParams) => async (dispatch) => {
+	let	cityId, 
+		cityDetails, 
+		searchQuery;
+
+	cityDetails = await ZomatoService.getCityDetails(filterParams.city).catch((e) => {
+		console.log(`There was an error fetching city details for: ${filterParams.city}`);
+	});
+	cityId = _.get(cityDetails, 'data.location_suggestions[0].id');
+
+	filterParams.entity_id = cityId;
+	delete filterParams.city;
+	
+	searchQuery = queryString.stringify(filterParams);
+
 	let filteredRestaurants = await ZomatoService.fetchFilteredRestaurants(searchQuery).catch((e) => {
 		console.log('There was an error fetching filtered list of restaurants.');
 	});
