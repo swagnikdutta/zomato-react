@@ -4,7 +4,9 @@ import {Input, Button, Checkbox, Wrapper} from './Style';
 
 class SearchUtility extends Component{
 	state = {
-		city: ''
+		city: '',
+		searchQuery: '',
+		searchType: 'restaurant'
 	};
 
 	componentWillMount(){
@@ -16,28 +18,43 @@ class SearchUtility extends Component{
 		});
 	}
 
-	handleChange = (event) => {
+	handleInputChange = (param, event) => {
 		this.setState({
-			city: event.target.value
+			[param]: event.target.value
 		});
 	}
 
-	handleSubmit = (event) => {
+	handleSubmit = () => {
+		let city = this.state.city,
+			searchType = this.state.searchType,
+			searchQuery = this.state.searchQuery;
 
+		this.props.onSearchEventFired({ city, searchType, searchQuery });
 	}
 
 	render(){
 		return (
 			<div>
-				<Input placeholder='Select city' value={this.state.city} onChange={this.handleChange} location />
-				<Input placeholder='Search for restaurant or cuisines...' />
-				<Button onClick={this.handleSubmit}>Search</Button>
+				<Input placeholder='Select city' 
+					value={this.state.city} 
+					onChange={(e) => this.handleInputChange('city', e)} location />
+
+				<Input placeholder='Search for restaurant or cuisines...' 
+					value={this.state.searchQuery} 
+					onChange={(e) => this.handleInputChange('searchQuery', e)}  />
+
+				<Button onClick={() => this.handleSubmit()} >Search</Button>
 				<Wrapper>
-					<Checkbox type="checkbox" value="restaurant" defaultChecked />Search by restaurant
-					<Checkbox type="checkbox" value="cuisine" />Search by cuisine
+					<Checkbox type="checkbox" 
+						value="restaurant" 
+						checked={this.state.searchType === 'restaurant'} 
+						onChange={(e) => this.handleInputChange('searchType', e)} />Search by restaurant
+
+					<Checkbox type="checkbox" 
+						value="cuisine" 
+						checked={this.state.searchType === 'cuisine'}
+						onChange={(e) => this.handleInputChange('searchType', e)} />Search by cuisine
 				</Wrapper>
-				
-				
 			</div>
 		);
 	}

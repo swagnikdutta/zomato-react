@@ -17,12 +17,17 @@ class Home extends Component{
 		this.props.fetchRestaurantCategories();
 	}
 
+	handleSearchEvent = ({city, searchType, searchQuery}) => {
+		debugger;
+		// dispatch action from here
+	}
+
 	render(){
 		let city = this.props.match.params.city;
 		return (
 			<div>
 				<Banner bannerOpacity={0.5}>
-					<SearchUtility city={city} />
+					<SearchUtility city={city} onSearchEventFired={(searchData) => this.handleSearchEvent(searchData)} />
 				</Banner>
 				<Collections restaurantCollections={this.props.restaurantCollections} city={city} renderSource={'Home'} />
 			</div>
