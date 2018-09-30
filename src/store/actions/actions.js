@@ -71,10 +71,22 @@ const fetchRestaurantDetails = (restaurantId) => async (dispatch) => {
 	});
 }
 
+const fetchCuisinesInCity = (cityId) => async (dispatch) => {
+	const cuisines = await ZomatoService.fetchCuisinesInCity(cityId).catch((e) => {
+		console.log(`There was an error fetching cuisines for cityId: ${cityId}`);
+	});
+
+	dispatch({
+		type: actionTypes.FETCH_CUISINES,
+		cuisines: _.get(cuisines, 'data.cuisines')
+	});
+}
+
 export default {
 	getCityId,
 	fetchRestaurantCollections,
 	fetchRestaurantCategories,
 	fetchFilteredRestaurants,
 	fetchRestaurantDetails,
+	fetchCuisinesInCity
 }

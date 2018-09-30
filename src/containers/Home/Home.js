@@ -23,11 +23,15 @@ class Home extends Component{
 	handleSearchEvent = ({city, searchType, searchQuery}) => {
 		let pathname = `/${city.toLowerCase()}` + (searchQuery ? `/restaurants/${searchQuery}` : ''),
 			navigateObj = {
-				pathname,
+				pathname
 			};
 
 			if(searchQuery){
-				navigateObj.state = { searchType, searchQuery }
+				navigateObj.state = { 
+					searchType, 
+					searchQuery, 
+					cityId: this.props.cityId 
+				}
 			}
 			
 		this.props.history.push(navigateObj);

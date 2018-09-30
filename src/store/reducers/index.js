@@ -2,12 +2,13 @@ import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../utility';
 
 const initialState = {
-	cityId: null,
+	cityId: 4,
 	restaurantCollections: [],
 	restaurantCategories: [],
 	filteredRestaurants: [],
 	restaurantDetails: {},
-	restaurantReviews: {}
+	restaurantReviews: {},
+	cuisines: []
 };
 
 const getCityId = (state, action) => {
@@ -41,6 +42,12 @@ const fetchRestaurantDetails = (state, action) => {
 	});
 }
 
+const fetchCuisinesInCity = (state, action) => {
+	return updateObject(state, {
+		cuisines: action.cuisines
+	});
+}
+
 const reducer = (state = initialState, action) => {
 	switch(action.type){
 		case actionTypes.FETCH_CITY_ID: {
@@ -57,6 +64,9 @@ const reducer = (state = initialState, action) => {
 		}
 		case actionTypes.FETCH_RESTAURANT_DETAILS: {
 			return fetchRestaurantDetails(state, action);
+		}
+		case actionTypes.FETCH_CUISINES: {
+			return fetchCuisinesInCity(state, action);
 		}
 		default: return state;
 	}

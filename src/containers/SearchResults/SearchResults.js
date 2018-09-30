@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
-// import _ from 'lodash';
+import _ from 'lodash';
 
-// import Actions from '../../store/actions/actions';
+import Actions from '../../store/actions/actions';
 
 import classes from './Style.css';
 
@@ -13,14 +13,14 @@ import { Wrapper } from './Style';
 
 class SearchResults extends Component{
 
-	componentDidMount(){
-
-		debugger;
-		let city = this.props.match.params.city;
-		this.props.fetchCuisinesInCity()
-		let searchParams = {
-			// city: 
-		}
+	async componentDidMount(){
+		let cityId = this.props.location.state.cityId;
+		await this.props.fetchCuisinesInCity(cityId);
+		
+		// this.props.cuisines
+		// let searchParams = {
+		// 	// city: 
+		// }
 		// city => cityid or entity id
 		// entity type => city
 		// q => restaurant className
@@ -46,13 +46,13 @@ class SearchResults extends Component{
 
 const mapStateToProps = state => {
     return {
-    	// restaurantDetails: _.get(state, 'zomatoReducer.restaurantDetails', {}),
+    	cuisines: _.get(state, 'zomatoReducer.cuisines', [])
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        // fetchRestaurantDetails: (restaurantId) => dispatch(Actions.fetchRestaurantDetails(restaurantId))
+        fetchCuisinesInCity: (cityId) => dispatch(Actions.fetchCuisinesInCity(cityId))
     }
 }
 
