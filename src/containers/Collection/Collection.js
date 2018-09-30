@@ -18,19 +18,23 @@ class Collection extends Component{
 		}
 	}
 
-	componentDidMount(){
-		let collectionId = this.props.match.params.collectionId,
-			city = this.props.match.params.city;
+	async componentDidMount(){
+		if(this.props.cityId === null){		// if some one changes the collection id in the url itself
+			await this.props.getCityId(this.props.match.params.city);
+		}
 
-		updateStateWithCollectionId(this, collectionId, city);
+		let collectionId = this.props.match.params.collectionId,
+			cityId = this.props.cityId;
+		
+		updateStateWithCollectionId(this, collectionId, cityId);
 	}
 
 	componentWillReceiveProps(newProps){
 		let newCollectionId = newProps.match.params.collectionId,
-			city = newProps.match.params.city;
+			cityId = newProps.cityId;
 
 		if(this.state.collectionId !== newCollectionId){
-			updateStateWithCollectionId(this, newCollectionId, city);
+			updateStateWithCollectionId(this, newCollectionId, cityId);
 		}
 	}
 
@@ -58,14 +62,14 @@ class Collection extends Component{
 	}
 }
 
-const updateStateWithCollectionId = (scope, id, city) => {
+const updateStateWithCollectionId = (scope, id, cityId) => {
 	scope.setState({
 		collectionId: id
 	}, () => {
 		let filterParams = {
 			collection_id: scope.state.collectionId,
 			entity_type: 'city',
-			city
+			entity_id: cityId
 		};
 		scope.props.fetchFilteredRestaurants(filterParams);
 	});
@@ -73,6 +77,7 @@ const updateStateWithCollectionId = (scope, id, city) => {
 
 const mapStateToProps = state => {
     return {
+    	cityId: _.get(state, 'zomatoReducer.cityId', null),
     	filteredRestaurants: _.get(state, 'zomatoReducer.filteredRestaurants', []),
     };
 }
@@ -80,6 +85,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchFilteredRestaurants: (filterParams) => dispatch(Actions.fetchFilteredRestaurants(filterParams)),
+        getCityId: (city) => dispatch(Actions.getCityId(city))
     }
 }
 

@@ -12,9 +12,11 @@ import Collections from '../../components/Collections/Collections';
 
 class Home extends Component{
 
-	componentDidMount(){
+	async componentDidMount(){
 		let city = this.props.match.params.city;
-		this.props.fetchRestaurantCollections(city);
+		
+		await this.props.getCityId(city);
+		this.props.fetchRestaurantCollections(this.props.cityId);
 		this.props.fetchRestaurantCategories();
 	}
 
@@ -46,6 +48,7 @@ class Home extends Component{
 
 const mapStateToProps = state => {
     return {
+    	cityId: _.get(state, 'zomatoReducer.cityId', null),
     	restaurantCollections: _.get(state, 'zomatoReducer.restaurantCollections', []),
     	restaurantCategories: _.get(state, 'zomatoReducer.restaurantCategories', []),
     };
@@ -53,7 +56,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchRestaurantCollections: (city) => dispatch(Actions.fetchRestaurantCollections(city)),
+    	getCityId: (city) => dispatch(Actions.getCityId(city)),
+        fetchRestaurantCollections: (cityId) => dispatch(Actions.fetchRestaurantCollections(cityId)),
         fetchRestaurantCategories: () => dispatch(Actions.fetchRestaurantCategories())
     }
 }

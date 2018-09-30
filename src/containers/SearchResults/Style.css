@@ -1,0 +1,15 @@
+.filters{
+	height: 500px;
+	border: 1px solid lightgrey;
+	width: 23%;
+	margin-right: 2%;
+	float: left;
+	/*box-shadow: 2px 2px 10px #D3D3D3;*/
+}
+
+.results{
+	height: 500px;
+	border: 1px solid lightgrey;
+	width: 75%;
+	float: left;
+}

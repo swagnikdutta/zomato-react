@@ -4,21 +4,41 @@ import { connect } from 'react-redux';
 
 // import Actions from '../../store/actions/actions';
 
+import classes from './Style.css';
+
 // Components
+
 
 import { Wrapper } from './Style';
 
 class SearchResults extends Component{
 
 	componentDidMount(){
+
 		debugger;
+		let city = this.props.match.params.city;
+		this.props.fetchCuisinesInCity()
+		let searchParams = {
+			// city: 
+		}
+		// city => cityid or entity id
+		// entity type => city
+		// q => restaurant className
+
+
+		// this.props.fetchSearchResults();
 	}
 
 	render(){
 
 		return (
 			<Wrapper>
-				this is search Results component
+				<div className={classes.filters}>
+					
+				</div>
+				<div className={classes.results}>
+					
+				</div>
 			</Wrapper>
 		);
 	}

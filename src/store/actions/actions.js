@@ -4,17 +4,24 @@ import * as actionTypes from './actionTypes';
 const _ = require('lodash');
 const queryString = require('query-string');
 
-const fetchRestaurantCollections = (city) => async (dispatch) => {
-	let	cityId, 
-		cityDetails, 
-		restaurantCollections;
+const getCityId = (city) => async (dispatch) => {
+	let cityId, cityDetails;
 
 	cityDetails = await ZomatoService.getCityDetails(city).catch((e) => {
 		console.log(`There was an error fetching city details for: ${city}`);
 	});
-	cityId = _.get(cityDetails, 'data.location_suggestions[0].id');
+
+	dispatch({
+		type: actionTypes.FETCH_CITY_ID,
+		cityId: _.get(cityDetails, 'data.location_suggestions[0].id')
+	});
+}
+
+const fetchRestaurantCollections = (cityId) => async (dispatch) => {
+	let	restaurantCollections;
+
 	restaurantCollections = await ZomatoService.fetchRestaurantCollections(cityId).catch((e) => {
-		console.log(`There was an error fetching restaurant collections in: ${city}`);
+		console.log(`There was an error fetching restaurant collections for cityId: ${cityId}`);
 	});
 
 	dispatch({
@@ -35,19 +42,7 @@ const fetchRestaurantCategories = () => async (dispatch) => {
 }
 
 const fetchFilteredRestaurants = (filterParams) => async (dispatch) => {
-	let	cityId, 
-		cityDetails, 
-		searchQuery;
-
-	cityDetails = await ZomatoService.getCityDetails(filterParams.city).catch((e) => {
-		console.log(`There was an error fetching city details for: ${filterParams.city}`);
-	});
-	cityId = _.get(cityDetails, 'data.location_suggestions[0].id');
-
-	filterParams.entity_id = cityId;
-	delete filterParams.city;
-	
-	searchQuery = queryString.stringify(filterParams);
+	let	searchQuery = queryString.stringify(filterParams);
 
 	let filteredRestaurants = await ZomatoService.fetchFilteredRestaurants(searchQuery).catch((e) => {
 		console.log('There was an error fetching filtered list of restaurants.');
@@ -77,6 +72,7 @@ const fetchRestaurantDetails = (restaurantId) => async (dispatch) => {
 }
 
 export default {
+	getCityId,
 	fetchRestaurantCollections,
 	fetchRestaurantCategories,
 	fetchFilteredRestaurants,
