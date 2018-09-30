@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from "react-router-dom";
 import _ from 'lodash';
 
 import Actions from '../../store/actions/actions';
@@ -18,8 +19,16 @@ class Home extends Component{
 	}
 
 	handleSearchEvent = ({city, searchType, searchQuery}) => {
-		debugger;
-		// dispatch action from here
+		let pathname = `/${city.toLowerCase()}` + (searchQuery ? `/restaurants/${searchQuery}` : ''),
+			navigateObj = {
+				pathname,
+			};
+
+			if(searchQuery){
+				navigateObj.state = { searchType, searchQuery }
+			}
+			
+		this.props.history.push(navigateObj);
 	}
 
 	render(){
@@ -49,4 +58,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Home));

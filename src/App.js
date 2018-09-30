@@ -6,6 +6,7 @@ import './App.css';
 import Home from './containers/Home/Home';
 import Collection from './containers/Collection/Collection';
 import Restaurant from './containers/Restaurant/Restaurant';
+import SearchResults from './containers/SearchResults/SearchResults';
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
         <Route path='/:city' exact component={Home} />
         <Route path='/:city/collection/:collectionId' exact component={Collection} />
         <Route path='/:city/restaurant/:restaurantId' exact component={Restaurant} />
+        <Route path='/:city/restaurants/:searchQuery' exact component={SearchResults} />
       </div>
     );
   }
