@@ -7,7 +7,8 @@ import Actions from '../../store/actions/actions';
 import classes from './Style.css';
 
 // Components
-
+import Filters from '../../components/Filters/Filters';
+import FetchedResults from '../../components/FetchedResults/FetchedResults';
 
 import { Wrapper } from './Style';
 
@@ -50,10 +51,10 @@ class SearchResults extends Component{
 		return (
 			<Wrapper>
 				<div className={classes.filters}>
-					
+					<Filters />
 				</div>
 				<div className={classes.results}>
-					
+					<FetchedResults restaurants={this.props.searchResults} />
 				</div>
 			</Wrapper>
 		);
