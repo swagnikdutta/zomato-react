@@ -82,11 +82,25 @@ const fetchCuisinesInCity = (cityId) => async (dispatch) => {
 	});
 }
 
+const fetchSearchResults = (searchParams) => async (dispatch) => {
+	let searchQuery = queryString.stringify(searchParams);
+	
+	let searchResults = await ZomatoService.fetchFilteredRestaurants(searchQuery).catch((e) => {
+		console.log(`There was an error fetching search results for query: ${searchQuery}`);
+	});
+	
+	dispatch({
+		type: actionTypes.FETCH_SEARCH_RESULTS,
+		searchResults: _.get(searchResults, 'data.restaurants')
+	});
+}
+
 export default {
 	getCityId,
 	fetchRestaurantCollections,
 	fetchRestaurantCategories,
 	fetchFilteredRestaurants,
 	fetchRestaurantDetails,
-	fetchCuisinesInCity
+	fetchCuisinesInCity,
+	fetchSearchResults
 }

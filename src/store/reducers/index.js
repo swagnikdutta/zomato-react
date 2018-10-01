@@ -8,7 +8,8 @@ const initialState = {
 	filteredRestaurants: [],
 	restaurantDetails: {},
 	restaurantReviews: {},
-	cuisines: []
+	cuisines: [],
+	searchResults: [],
 };
 
 const getCityId = (state, action) => {
@@ -48,6 +49,12 @@ const fetchCuisinesInCity = (state, action) => {
 	});
 }
 
+const fetchSearchResults = (state, action) => {
+	return updateObject(state, {
+		searchResults: action.searchResults
+	});
+}
+
 const reducer = (state = initialState, action) => {
 	switch(action.type){
 		case actionTypes.FETCH_CITY_ID: {
@@ -67,6 +74,9 @@ const reducer = (state = initialState, action) => {
 		}
 		case actionTypes.FETCH_CUISINES: {
 			return fetchCuisinesInCity(state, action);
+		}
+		case actionTypes.FETCH_SEARCH_RESULTS: {
+			return fetchSearchResults(state, action);
 		}
 		default: return state;
 	}

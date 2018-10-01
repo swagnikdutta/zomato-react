@@ -14,23 +14,39 @@ import { Wrapper } from './Style';
 class SearchResults extends Component{
 
 	async componentDidMount(){
-		let cityId = this.props.location.state.cityId;
+		let cityId = this.props.location.state.cityId,
+			searchParams = {};
+
 		await this.props.fetchCuisinesInCity(cityId);
 		
-		// this.props.cuisines
-		// let searchParams = {
-		// 	// city: 
-		// }
-		// city => cityid or entity id
-		// entity type => city
-		// q => restaurant className
+		if(this.props.location.state.searchType === 'cuisine'){
+			let cuisine = this.props.location.state.searchQuery,
+				cuisineId = this.getCuisineId(cuisine);
 
+			searchParams = {
+				entity_id: cityId,
+				entity_type: 'city',
+				cuisines: cuisineId
+			};
+		} else if(this.props.location.state.searchType === 'restaurant') {
+			let restaurant = this.props.location.state.searchQuery;
 
-		// this.props.fetchSearchResults();
+			searchParams = {
+				entity_id: cityId,
+				entity_type: 'city',
+				q: restaurant
+			};
+		}
+		this.props.fetchSearchResults(searchParams);
 	}
 
-	render(){
+	getCuisineId = (cuisine) => _.get(
+		_.find(this.props.cuisines, (elem) => elem.cuisine.cuisine_name.toLowerCase() === cuisine), 
+		'cuisine.cuisine_id',
+		null
+	);
 
+	render(){
 		return (
 			<Wrapper>
 				<div className={classes.filters}>
@@ -46,13 +62,15 @@ class SearchResults extends Component{
 
 const mapStateToProps = state => {
     return {
-    	cuisines: _.get(state, 'zomatoReducer.cuisines', [])
+    	cuisines: _.get(state, 'zomatoReducer.cuisines', []),
+    	searchResults: _.get(state, 'zomatoReducer.searchResults', [])
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchCuisinesInCity: (cityId) => dispatch(Actions.fetchCuisinesInCity(cityId))
+        fetchCuisinesInCity: (cityId) => dispatch(Actions.fetchCuisinesInCity(cityId)),
+        fetchSearchResults: (searchParams) => dispatch(Actions.fetchSearchResults(searchParams))
     }
 }
 
