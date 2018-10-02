@@ -27,6 +27,9 @@ const masterConfig = {
 				insertAt: 'start',
 				path: 'restaurant.currency',
 			}]
+		},
+		thumb: {
+			path: 'thumb'
 		}
 	},
 	// filters: {

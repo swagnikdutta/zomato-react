@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import { CardWrapper, CardTop, CardBottom, ImageWrapper, Image, BasicDetail } from './Style';
+import { CardWrapper, CardTop, CardBottom, ImageWrapper, Image, BasicDetail, Name, ShortAddress, LongAddress, InfoKeys, InfoValues, Button } from './Style';
 
 const card = (props) => {
 
@@ -17,19 +17,29 @@ const card = (props) => {
 
 	return (
 		<CardWrapper>
-			<Link to={navigateObj}>
-				<CardTop>
-					<ImageWrapper>
-						<Image />
-					</ImageWrapper>
-					<BasicDetail>
-						ta
-					</BasicDetail>
-				</CardTop>
-				<CardBottom>
-					
-				</CardBottom>
-			</Link>
+			<CardTop>
+				<ImageWrapper>
+					<Image thumb_url={props.thumb_image_url} />
+				</ImageWrapper>
+				<BasicDetail>
+					<Name>{props.name}</Name>
+					<ShortAddress>{props.address_short}</ShortAddress>
+					<LongAddress>{props.address_long}</LongAddress>
+				</BasicDetail>
+			</CardTop>
+			<CardBottom>
+				<InfoKeys>
+					<p>CUISINE</p>
+					<p>COST FOR TWO</p>
+				</InfoKeys>
+				<InfoValues>
+					<p>{props.cuisines}</p>
+					<p>{props.average_cost_for_two}</p>
+				</InfoValues>
+				<Link to={navigateObj}>
+					<Button>VISIT RESTAURANT</Button>
+				</Link>
+			</CardBottom>
 		</CardWrapper>
 	);
 }

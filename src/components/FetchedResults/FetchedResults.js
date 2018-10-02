@@ -27,6 +27,7 @@ const getRestaurantCardComponent = (restaurantObj, idx) => {
 
 	return <Card key={idx}
 				name={temp.name}
+				thumb_image_url={temp.thumb}
 				aggregate_rating={temp.aggregate_rating}
 				rating_color={temp.rating_color}
 				votes={temp.votes}
