@@ -3,6 +3,9 @@ const masterConfig = {
 		name: {
 			path: 'name',
 		},
+		restaurant_id: {
+			path: 'R.res_id'
+		},
 		aggregate_rating: {
 			path: 'user_rating.aggregate_rating',
 		},

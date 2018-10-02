@@ -6,13 +6,7 @@ import { CardWrapper, CardTop, CardBottom, ImageWrapper, Image, BasicDetail, Nam
 const card = (props) => {
 
 	let navigateObj = {
-		// pathname: `/${props.city}/collection/${props.collectionId}`,
-		// state: {
-		// 	bannerImageUrl: props.cardImageUrl,
-		// 	collectionTitle: props.title, 
-		// 	collectionDescription: props.description,
-		// 	restaurantCollections: props.restaurantCollections
-		// }
+		pathname: `/${props.city}/restaurant/${props.restaurant_id}`,
 	}
 
 	return (

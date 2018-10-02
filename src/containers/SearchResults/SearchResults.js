@@ -54,7 +54,7 @@ class SearchResults extends Component{
 					<Filters />
 				</div>
 				<div className={classes.results}>
-					<FetchedResults restaurants={this.props.searchResults} />
+					<FetchedResults restaurants={this.props.searchResults} city={this.props.match.params.city} />
 				</div>
 			</Wrapper>
 		);

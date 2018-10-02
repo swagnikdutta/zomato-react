@@ -7,7 +7,7 @@ import Card from './Card/Card';
 // config
 import { restaurant as restaurantConfig } from '../../config/SearchResultsConfig';
 
-const getRestaurantCardComponent = (restaurantObj, idx) => {
+const getRestaurantCardComponent = (restaurantObj, city, idx) => {
 	let temp = {};
 	
 	Object.keys(restaurantConfig).forEach((elem, idx) => {
@@ -26,8 +26,10 @@ const getRestaurantCardComponent = (restaurantObj, idx) => {
 	});
 
 	return <Card key={idx}
+				city={city}
 				name={temp.name}
 				thumb_image_url={temp.thumb}
+				restaurant_id={temp.restaurant_id}
 				aggregate_rating={temp.aggregate_rating}
 				rating_color={temp.rating_color}
 				votes={temp.votes}
@@ -38,7 +40,8 @@ const getRestaurantCardComponent = (restaurantObj, idx) => {
 }
 
 const fetchedResults = (props) => {
-	let restaurantsList = props.restaurants.map((elem, idx) => getRestaurantCardComponent(elem.restaurant, idx));
+	let city = props.city;
+	let restaurantsList = props.restaurants.map((elem, idx) => getRestaurantCardComponent(elem.restaurant, city, idx));
 
 	return(
 		<div>
