@@ -25,10 +25,7 @@ class SearchUtility extends Component{
 	}
 
 	handleSubmit = () => {
-		let city = this.state.city,
-			searchType = this.state.searchType,
-			searchQuery = this.state.searchQuery;
-
+		let { city, searchType, searchQuery } = this.state;
 		this.props.onSearchEventFired({ city, searchType, searchQuery });
 	}
 
