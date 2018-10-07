@@ -12,46 +12,17 @@ const initialState = {
 	searchResults: [],
 };
 
-const getCityId = (state, action) => {
-	return updateObject(state, {
-		cityId: action.cityId
-	});
-}
-
-const fetchRestaurantCollections = (state, action) => {
-	return updateObject(state, {
-		restaurantCollections: action.restaurantCollections
-	});
-}
-
-const fetchRestaurantCategories = (state, action) => {
-	return updateObject(state, {
-		restaurantCategories: action.restaurantCategories
-	});
-}
-
-const fetchFilteredRestaurants = (state, action) => {
-	return updateObject(state, {
-		filteredRestaurants: action.filteredRestaurants
-	});
-}
+const getCityId 					= (state, { cityId }) => updateObject(state, { cityId });
+const fetchRestaurantCollections 	= (state, { restaurantCollections }) => updateObject(state, { restaurantCollections });
+const fetchRestaurantCategories 	= (state, { restaurantCategories }) => updateObject(state, { restaurantCategories });
+const fetchFilteredRestaurants 		= (state, { filteredRestaurants }) => updateObject(state, { filteredRestaurants });
+const fetchCuisinesInCity 			= (state, { cuisines }) => updateObject(state, { cuisines });
+const fetchSearchResults 			= (state, { searchResults }) => updateObject(state, { searchResults });
 
 const fetchRestaurantDetails = (state, action) => {
 	return updateObject(state, {
 		restaurantDetails: action.data.restaurantDetails,
 		restaurantReviews: action.data.restaurantReviews,
-	});
-}
-
-const fetchCuisinesInCity = (state, action) => {
-	return updateObject(state, {
-		cuisines: action.cuisines
-	});
-}
-
-const fetchSearchResults = (state, action) => {
-	return updateObject(state, {
-		searchResults: action.searchResults
 	});
 }
 
