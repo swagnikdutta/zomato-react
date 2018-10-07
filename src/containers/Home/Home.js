@@ -27,22 +27,15 @@ class Home extends Component{
 
 		let pathname = `/${city.toLowerCase()}` + (searchQuery ? `/restaurants/${searchQuery}` : '/restaurants'),
 			navigateObj = {
-				pathname
-			},
-			tempState = {
-				cityId: this.props.cityId
-			}, 
-			searchQueryObject = {};
+				pathname,
+				state: {
+					cityId: this.props.cityId	
+				}
+			};
 
 		if(searchQuery){
-			searchQueryObject = {
-				searchType, 
-				searchQuery
-			}
+			_.extend(navigateObj.state, { searchType, searchQuery });
 		}
-
-		navigateObj.state = Object.assign(tempState, searchQueryObject);	
-		// console.log(JSON.stringify(navigateObj, undefined, 4));
 		this.props.history.push(navigateObj);
 	}
 
