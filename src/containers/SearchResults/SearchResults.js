@@ -17,10 +17,10 @@ class SearchResults extends Component{
 	async componentDidMount(){
 		let cityId = this.props.location.state.cityId,
 			searchParams = {};
-			// debugger;
-		await this.props.fetchCuisinesInCity(cityId);
 		
 		if(this.props.location.state.searchType === 'cuisine'){
+			await this.props.fetchCuisinesInCity(cityId);
+
 			let cuisine = this.props.location.state.searchQuery,
 				cuisineId = this.getCuisineId(cuisine);
 
@@ -37,6 +37,11 @@ class SearchResults extends Component{
 				entity_type: 'city',
 				q: restaurant
 			};
+		} else {
+			searchParams = {
+				entity_id: cityId,
+				entity_type: 'city'
+			}
 		}
 		this.props.fetchSearchResults(searchParams);
 	}
@@ -62,7 +67,6 @@ class SearchResults extends Component{
 }
 
 const mapStateToProps = state => {
-	// debugger;
     return {
     	cuisines: _.get(state, 'zomatoReducer.cuisines', []),
     	searchResults: _.get(state, 'zomatoReducer.searchResults', [])

@@ -25,7 +25,6 @@ const fetchRestaurantCategories = async () => {
 }
 
 const fetchFilteredRestaurants = async (searchQuery) => {
-	console.log(searchQuery);
 	return await APIService.invoke({
 		url: `https://developers.zomato.com/api/v2.1/search?${searchQuery}`,
 		method: 'GET'
