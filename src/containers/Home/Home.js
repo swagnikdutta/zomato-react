@@ -20,20 +20,29 @@ class Home extends Component{
 		this.props.fetchRestaurantCategories();
 	}
 
-	handleSearchEvent = ({city, searchType, searchQuery}) => {
-		let pathname = `/${city.toLowerCase()}` + (searchQuery ? `/restaurants/${searchQuery}` : ''),
+	handleSearchEvent = async ({city, searchType, searchQuery}) => {
+		if(city !== this.props.match.params.city){
+			await this.props.getCityId(city);
+		}
+
+		let pathname = `/${city.toLowerCase()}` + (searchQuery ? `/restaurants/${searchQuery}` : '/restaurants'),
 			navigateObj = {
 				pathname
-			};
+			},
+			tempState = {
+				cityId: this.props.cityId
+			}, 
+			searchQueryObject = {};
 
-			if(searchQuery){
-				navigateObj.state = { 
-					searchType, 
-					searchQuery, 
-					cityId: this.props.cityId 
-				}
+		if(searchQuery){
+			searchQueryObject = {
+				searchType, 
+				searchQuery
 			}
-			
+		}
+
+		navigateObj.state = Object.assign(tempState, searchQueryObject);	
+		// console.log(JSON.stringify(navigateObj, undefined, 4));
 		this.props.history.push(navigateObj);
 	}
 

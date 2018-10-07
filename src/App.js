@@ -16,7 +16,7 @@ class App extends Component {
         <Route path='/:city' exact component={Home} />
         <Route path='/:city/collection/:collectionId' exact component={Collection} />
         <Route path='/:city/restaurant/:restaurantId' exact component={Restaurant} />
-        <Route path='/:city/restaurants/:searchQuery' exact component={SearchResults} />
+        <Route path='/:city/restaurants' component={SearchResults} />
       </div>
     );
   }
