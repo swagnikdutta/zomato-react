@@ -18,8 +18,8 @@ class SearchResults extends Component{
 		let cityId = this.props.location.state.cityId,
 			searchParams = {};
 		
+		await this.props.fetchCuisinesInCity(cityId);
 		if(this.props.location.state.searchType === 'cuisine'){
-			await this.props.fetchCuisinesInCity(cityId);
 
 			let cuisine = this.props.location.state.searchQuery,
 				cuisineId = this.getCuisineId(cuisine);
@@ -56,7 +56,9 @@ class SearchResults extends Component{
 		return (
 			<Wrapper>
 				<div className={classes.filters}>
-					<Filters />
+					<Filters 
+						cuisines={this.props.cuisines} 
+						restaurantCategories={this.props.restaurantCategories} />
 				</div>
 				<div className={classes.results}>
 					<FetchedResults restaurants={this.props.searchResults} city={this.props.match.params.city} />
@@ -69,7 +71,8 @@ class SearchResults extends Component{
 const mapStateToProps = state => {
     return {
     	cuisines: _.get(state, 'zomatoReducer.cuisines', []),
-    	searchResults: _.get(state, 'zomatoReducer.searchResults', [])
+    	searchResults: _.get(state, 'zomatoReducer.searchResults', []),
+    	restaurantCategories: _.get(state, 'zomatoReducer.restaurantCategories', []),
     };
 }
 
