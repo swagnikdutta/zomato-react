@@ -18,13 +18,7 @@ const fetchRestaurantCategories 	= (state, { restaurantCategories }) => updateOb
 const fetchFilteredRestaurants 		= (state, { filteredRestaurants }) => updateObject(state, { filteredRestaurants });
 const fetchCuisinesInCity 			= (state, { cuisines }) => updateObject(state, { cuisines });
 const fetchSearchResults 			= (state, { searchResults }) => updateObject(state, { searchResults });
-
-const fetchRestaurantDetails = (state, action) => {
-	return updateObject(state, {
-		restaurantDetails: action.data.restaurantDetails,
-		restaurantReviews: action.data.restaurantReviews,
-	});
-}
+const fetchRestaurantDetails 		= (state, { data: { restaurantDetails }}, { data: { restaurantReviews }}) => updateObject(state, { restaurantDetails, restaurantReviews });
 
 const reducer = (state = initialState, action) => {
 	switch(action.type){
@@ -41,7 +35,7 @@ const reducer = (state = initialState, action) => {
 			return fetchFilteredRestaurants(state, action);
 		}
 		case actionTypes.FETCH_RESTAURANT_DETAILS: {
-			return fetchRestaurantDetails(state, action);
+			return fetchRestaurantDetails(state, action, action);
 		}
 		case actionTypes.FETCH_CUISINES: {
 			return fetchCuisinesInCity(state, action);
