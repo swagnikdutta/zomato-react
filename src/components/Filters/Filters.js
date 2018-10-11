@@ -1,43 +1,33 @@
-import React from 'react';
-// import _ from 'lodash';
-
-// components
+import React, { Component } from 'react';
 
 import { filters as filtersConfig } from '../../config/filtersConfig';
+import Helpers from './Helpers/Helpers';
 
-import { Wrapper, FilterBy, FilterBlock } from './Style.js';
+// Components
+import FilterBlock from './FilterBlock/FilterBlock';
+import { Wrapper } from './Style.js';
 
-const filters = (props) => {
+class Filters extends Component {
 
-	let allFilters = [];
-	populateFiltersConfig(props);
+	componentWillReceiveProps(newProps){
+		if(JSON.stringify(newProps) !== JSON.stringify(this.props)){
+			Helpers.populateFiltersConfig(newProps);
+		}
+	}
 
-	Object.keys(filtersConfig).forEach((elem) => {
-		let something = getFilterBlock(filtersConfig[elem]);
-		allFilters.push(something);
-	});
-	
-	return (
-		<Wrapper>
-			{allFilters}
-		</Wrapper>
-	);
-};
+	shouldComponentUpdate(newProps){
+		return JSON.stringify(newProps) !== JSON.stringify(this.props);
+	}
 
-const populateFiltersConfig = ({cuisines, restaurantCategories}) => {
-	cuisines.forEach(elem => filtersConfig.cuisine.values.push(elem.cuisine));
-	restaurantCategories.forEach(elem => filtersConfig.category.values.push(elem.categories));
+	render(){
+		let filters = Object.values(filtersConfig).map((categoryFilter) => <FilterBlock filterData={categoryFilter} key={categoryFilter.label} /> );
+
+		return (
+			<Wrapper>
+				{filters}
+			</Wrapper>
+		)
+	}
 }
 
-const getFilterBlock = ({ label, values }) => {
-	return (
-		<FilterBlock>
-			<FilterBy>{label}</FilterBy>
-			<div className='checkbox-wrapper'>
-				<input type="checkbox" name="" value="Bike" />
-			</div>
-		</FilterBlock>
-	)
-}
-
-export default filters;
+export default Filters;
