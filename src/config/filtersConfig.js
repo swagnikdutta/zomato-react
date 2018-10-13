@@ -6,7 +6,8 @@ const masterConfig = {
 			path: {
 				name: 'cuisine_name',
 				id: 'cuisine_id'
-			}
+			},
+			queryKey: 'cuisines'
 		},
 		category: {
 			label: 'CATEGORY',
@@ -14,7 +15,8 @@ const masterConfig = {
 			path: {
 				name: 'name',
 				id: 'id'
-			}
+			},
+			queryKey: 'category'
 		}
 	}
 }
