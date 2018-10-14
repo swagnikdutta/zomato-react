@@ -1,13 +1,14 @@
 const masterConfig = {
 	filters: {
-		cuisine: {
+		cuisines: {
 			label: 'CUISINE',
 			values: [],
 			path: {
 				name: 'cuisine_name',
 				id: 'cuisine_id'
 			},
-			queryKey: 'cuisines'
+			queryKey: 'cuisines',
+			uri_encode: true,
 		},
 		category: {
 			label: 'CATEGORY',
@@ -16,7 +17,8 @@ const masterConfig = {
 				name: 'name',
 				id: 'id'
 			},
-			queryKey: 'category'
+			queryKey: 'category',
+			uri_encode: true,
 		}
 	}
 }
