@@ -22,6 +22,7 @@ class SearchResults extends Component{
 		let cityId = this.props.location.state.cityId,
 			searchParams = {};
 		
+		this.props.fetchRestaurantCategories();
 		await this.props.fetchCuisinesInCity(cityId);
 		if(this.props.location.state.searchType === 'cuisine'){
 
@@ -100,7 +101,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchCuisinesInCity: (cityId) => dispatch(Actions.fetchCuisinesInCity(cityId)),
-        fetchSearchResults: (searchParams) => dispatch(Actions.fetchSearchResults(searchParams))
+        fetchSearchResults: (searchParams) => dispatch(Actions.fetchSearchResults(searchParams)),
+        fetchRestaurantCategories: () => dispatch(Actions.fetchRestaurantCategories())
     }
 }
 

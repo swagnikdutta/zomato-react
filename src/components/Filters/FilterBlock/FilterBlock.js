@@ -66,7 +66,7 @@ const checkbox = (param, filterData, scope) => {
 				data-unique-id={uniqueId} 
 				checked={scope.state.query[filterData.queryKey].includes(uniqueId)}
 				onChange={(e) => scope.onFiltersUpdated(e)} /> 
-			{name}_{uniqueId}
+			{name}
 		</Temp>
 	)
 };
