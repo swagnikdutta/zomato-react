@@ -3,7 +3,7 @@ import _ from 'lodash';
 
 import { updateObject } from '../../../store/utility';
 
-import { Wrapper, Checkbox, Temp } from './Style.js';
+import { Wrapper, Checkbox, CheckboxWrapper, FilterLabel } from './Style.js';
 
 class FilterBlock extends Component{
 
@@ -49,6 +49,7 @@ class FilterBlock extends Component{
 
 		return (
 			<Wrapper>
+				<FilterLabel>{filterData.label}</FilterLabel>
 				{allCheckBoxes}
 			</Wrapper>
 		)
@@ -60,14 +61,14 @@ const checkbox = (param, filterData, scope) => {
 		uniqueId = param[filterData.path.id];
 
 	return (
-		<Temp key={`${filterData.label}_${uniqueId}`}>
+		<CheckboxWrapper key={`${filterData.label}_${uniqueId}`}>
 			<Checkbox type="checkbox" 
 				data-query-key={filterData.queryKey} 
 				data-unique-id={uniqueId} 
 				checked={scope.state.query[filterData.queryKey].includes(uniqueId)}
 				onChange={(e) => scope.onFiltersUpdated(e)} /> 
 			{name}
-		</Temp>
+		</CheckboxWrapper>
 	)
 };
 
