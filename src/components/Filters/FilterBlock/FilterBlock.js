@@ -39,7 +39,7 @@ class FilterBlock extends Component{
 
 		this.setState({ query: tempQuery }, () => {
 			let filterQueryString = this.generateQueryString({...this.state.query});
-			this.props.onFiltersUpdated(filterQueryString);
+			this.props.onFiltersUpdated(filterQueryString, queryKey);
 		});
 	}
 	

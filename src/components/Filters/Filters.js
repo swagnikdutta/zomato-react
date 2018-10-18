@@ -19,14 +19,14 @@ class Filters extends Component {
 		return JSON.stringify(newProps) !== JSON.stringify(this.props);
 	}
 
-	handleUpdatedFilters(filterQueryString){
-		this.props.onFiltersUpdated(filterQueryString);
+	handleUpdatedFilters(filterQueryString, queryKey){
+		this.props.onFiltersUpdated(filterQueryString, queryKey);
 	}
 
 	render(){
 		let filters = Object.values(filtersConfig).map((categoryFilter) => 
 			<FilterBlock 
-				onFiltersUpdated={ (filterQueryString) => this.handleUpdatedFilters(filterQueryString) } 
+				onFiltersUpdated={ (filterQueryString, queryKey) => this.handleUpdatedFilters(filterQueryString, queryKey) } 
 				filterData={categoryFilter} 
 				key={categoryFilter.label} /> );
 

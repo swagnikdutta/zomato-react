@@ -58,13 +58,13 @@ class SearchResults extends Component{
 		null
 	);
 
-	handleUpdatedFilters = (filterQueryString) => {
+	handleUpdatedFilters = (filterQueryString, queryKey) => {
 		let clone = {...this.state.searchParams},
 			filterQueryObj = qs.parse(filterQueryString);
 
 		if(!filterQueryString.length){
 			for(key in clone){
-				if(key !== 'entity_id' && key !== 'entity_type'){
+				if(key !== 'entity_id' && key !== 'entity_type' && key === queryKey){
 					delete clone[key];
 				}
 			}
@@ -87,7 +87,7 @@ class SearchResults extends Component{
 				<div className={classes.filters}>
 					<Filters 
 						cuisines={this.props.cuisines} 
-						onFiltersUpdated={(filterQueryString) => { this.handleUpdatedFilters(filterQueryString) }}
+						onFiltersUpdated={(filterQueryString, queryKey) => { this.handleUpdatedFilters(filterQueryString, queryKey) }}
 						restaurantCategories={this.props.restaurantCategories} />
 				</div>
 				<div className={classes.results}>
