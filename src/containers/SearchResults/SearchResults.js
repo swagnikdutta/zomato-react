@@ -62,9 +62,17 @@ class SearchResults extends Component{
 		let clone = {...this.state.searchParams},
 			filterQueryObj = qs.parse(filterQueryString);
 
-		for(var key in filterQueryObj){
-			let temp = filtersConfig[key].uri_encode ? filterQueryObj[key].split(',').join('%2C') : filterQueryObj[key];
-			_.extend(clone, { [key]: temp });
+		if(!filterQueryString.length){
+			for(key in clone){
+				if(key !== 'entity_id' && key !== 'entity_type'){
+					delete clone[key];
+				}
+			}
+		}else{
+			for(var key in filterQueryObj){
+				let temp = filtersConfig[key].uri_encode ? filterQueryObj[key].split(',').join('%2C') : filterQueryObj[key];
+				_.extend(clone, { [key]: temp });
+			}	
 		}
 
 		this.setState({ searchParams: clone }, () => {
