@@ -3,7 +3,7 @@ import defaultImage from '../../../assets/images/image-not-found.svg';
 
 export const CardWrapper = styled.div`
 	&{
-		width: 60%;
+		width: 65%;
 		margin-bottom: 3.5%;
 		padding: 10px;
 		border-radius: 8px;
@@ -27,7 +27,7 @@ export const CardBottom = styled.div`
 
 export const ImageWrapper = styled.div`
 	height: 100%;
-	width: 23%;
+	width: 20%;
 	float: left;
 	margin-right: 2%;
 `;
@@ -42,8 +42,18 @@ export const Image = styled.div`
 
 export const BasicDetail = styled.div`
 	height: 100%;
-	width: 75%;
+	width: 70%;
 	float: left;
+`;
+
+export const Rating = styled.div`
+	width: 8%;
+	float: left;
+	padding: 5px;
+	text-align: center;
+	background-color: ${props => `#${props.ratingColor}`};
+	color: #fff;
+	border-radius: 4px;
 `;
 
 export const Name = styled.div`
