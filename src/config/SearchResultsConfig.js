@@ -28,18 +28,13 @@ const masterConfig = {
 			path: 'average_cost_for_two',
 			extraData: [{
 				insertAt: 'start',
-				path: 'restaurant.currency',
+				path: 'currency',
 			}]
 		},
 		thumb: {
 			path: 'thumb'
 		}
-	},
-	// filters: {
-	// 	rating: {
-	// 		path: 'rating'
-	// 	}
-	// }
+	}
 };
 
 module.exports = {
