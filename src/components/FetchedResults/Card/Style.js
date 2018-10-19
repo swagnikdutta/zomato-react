@@ -3,18 +3,14 @@ import defaultImage from '../../../assets/images/image-not-found.svg';
 
 export const CardWrapper = styled.div`
 	&{
-		width: 60%;
+		width: 65%;
 		margin-bottom: 3.5%;
 		padding: 10px;
-		border-radius: 4px;
-		border-right: 1px solid lightgrey;
-		border-bottom: 1px solid lightgrey;
-		box-shadow: 2px 2px 30px #D3D3D3;
-		transition: box-shadow 300ms;
+		border-radius: 8px;
+		border: 1px solid lightgrey;
 	}
 	&:hover{
-		box-shadow: 1px 1px 1px #BBBBBB;
-		transition: box-shadow 300ms;
+		
 	}
 `;
 
@@ -31,7 +27,7 @@ export const CardBottom = styled.div`
 
 export const ImageWrapper = styled.div`
 	height: 100%;
-	width: 23%;
+	width: 20%;
 	float: left;
 	margin-right: 2%;
 `;
@@ -41,13 +37,23 @@ export const Image = styled.div`
 	width: 100%;
 	background: url( ${props => props.thumb_url ? props.thumb_url : defaultImage} );
 	background-size: cover;
-	border-radius: 4px;
+	border-radius: 8px;
 `;
 
 export const BasicDetail = styled.div`
 	height: 100%;
-	width: 75%;
+	width: 70%;
 	float: left;
+`;
+
+export const Rating = styled.div`
+	width: 8%;
+	float: left;
+	padding: 5px;
+	text-align: center;
+	background-color: ${props => `#${props.ratingColor}`};
+	color: #fff;
+	border-radius: 4px;
 `;
 
 export const Name = styled.div`
@@ -88,15 +94,21 @@ export const InfoValues = styled.div`
 `;
 
 export const Button = styled.button`
-	width: 100%;
-	border: none;
-	margin: 10px 0 5px 0;
-	padding: 10px;
-	font-size: 0.8rem;
-	font-family: 'Muli', serif;
-	font-weight: bold;
-	border-radius: 4px;
-	background-color: #009688;
-	color: white;
-	cursor: pointer;
+	&{
+		width: 100%;
+		border: 1px solid #e57373;
+		margin: 10px 0 0 0;
+		padding: 10px;
+		font-size: 0.8rem;
+		font-family: 'Muli', serif;
+		border-radius: 8px;
+		color: #e57373;
+		cursor: pointer;
+		transition: background-color 300ms, color 300ms;
+	}
+	&:hover{
+		background-color: #e57373;
+		color: #fff;
+		transition: background-color 300ms, color 300ms;
+	}
 `;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import { CardWrapper, CardTop, CardBottom, ImageWrapper, Image, BasicDetail, Name, ShortAddress, LongAddress, InfoKeys, InfoValues, Button } from './Style';
+import { CardWrapper, CardTop, CardBottom, Rating, ImageWrapper, Image, BasicDetail, Name, ShortAddress, LongAddress, InfoKeys, InfoValues, Button } from './Style';
 
 const card = (props) => {
 
@@ -20,6 +20,7 @@ const card = (props) => {
 					<ShortAddress>{props.address_short}</ShortAddress>
 					<LongAddress>{props.address_long}</LongAddress>
 				</BasicDetail>
+				<Rating ratingColor={props.rating_color}>{props.aggregate_rating}</Rating>
 			</CardTop>
 			<CardBottom>
 				<InfoKeys>

@@ -83,7 +83,7 @@ const fetchCuisinesInCity = (cityId) => async (dispatch) => {
 }
 
 const fetchSearchResults = (searchParams) => async (dispatch) => {
-	let searchQuery = queryString.stringify(searchParams);
+	let searchQuery = queryString.stringify(searchParams, { encode: false });
 	
 	let searchResults = await ZomatoService.fetchFilteredRestaurants(searchQuery).catch((e) => {
 		console.log(`There was an error fetching search results for query: ${searchQuery}`);

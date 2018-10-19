@@ -3,21 +3,26 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import Actions from '../../store/actions/actions';
-
 import classes from './Style.css';
-
 // Components
 import Filters from '../../components/Filters/Filters';
 import FetchedResults from '../../components/FetchedResults/FetchedResults';
-
 import { Wrapper } from './Style';
+// Config
+import { filters as filtersConfig } from '../../config/filtersConfig';
+
+const qs = require('query-string');
 
 class SearchResults extends Component{
+	state = {
+		searchParams: {}
+	}
 
 	async componentDidMount(){
 		let cityId = this.props.location.state.cityId,
 			searchParams = {};
 		
+		this.props.fetchRestaurantCategories();
 		await this.props.fetchCuisinesInCity(cityId);
 		if(this.props.location.state.searchType === 'cuisine'){
 
@@ -43,7 +48,8 @@ class SearchResults extends Component{
 				entity_type: 'city'
 			}
 		}
-		this.props.fetchSearchResults(searchParams);
+
+		this.setState({ searchParams }, () => this.props.fetchSearchResults(searchParams));
 	}
 
 	getCuisineId = (cuisine) => _.get(
@@ -52,12 +58,36 @@ class SearchResults extends Component{
 		null
 	);
 
+	handleUpdatedFilters = (filterQueryString, queryKey) => {
+		let clone = {...this.state.searchParams},
+			filterQueryObj = qs.parse(filterQueryString);
+
+		if(!filterQueryString.length){
+			for(key in clone){
+				if(key !== 'entity_id' && key !== 'entity_type' && key === queryKey){
+					delete clone[key];
+				}
+			}
+		}else{
+			for(var key in filterQueryObj){
+				let temp = filtersConfig[key].uri_encode ? filterQueryObj[key].split(',').join('%2C') : filterQueryObj[key];
+				_.extend(clone, { [key]: temp });
+			}	
+		}
+
+		this.setState({ searchParams: clone }, () => {
+			console.log(`Updated search params: \n${JSON.stringify(this.state.searchParams, undefined, 4)}`);
+			this.props.fetchSearchResults(this.state.searchParams);
+		});		
+	}
+
 	render(){
 		return (
 			<Wrapper>
 				<div className={classes.filters}>
 					<Filters 
 						cuisines={this.props.cuisines} 
+						onFiltersUpdated={(filterQueryString, queryKey) => { this.handleUpdatedFilters(filterQueryString, queryKey) }}
 						restaurantCategories={this.props.restaurantCategories} />
 				</div>
 				<div className={classes.results}>
@@ -79,7 +109,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchCuisinesInCity: (cityId) => dispatch(Actions.fetchCuisinesInCity(cityId)),
-        fetchSearchResults: (searchParams) => dispatch(Actions.fetchSearchResults(searchParams))
+        fetchSearchResults: (searchParams) => dispatch(Actions.fetchSearchResults(searchParams)),
+        fetchRestaurantCategories: () => dispatch(Actions.fetchRestaurantCategories())
     }
 }
 
