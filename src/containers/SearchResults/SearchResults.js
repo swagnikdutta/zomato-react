@@ -63,13 +63,13 @@ class SearchResults extends Component{
 			filterQueryObj = qs.parse(filterQueryString);
 
 		if(!filterQueryString.length){
-			for(key in clone){
+			for(let key in clone){
 				if(key !== 'entity_id' && key !== 'entity_type' && key === queryKey){
 					delete clone[key];
 				}
 			}
 		}else{
-			for(var key in filterQueryObj){
+			for(let key in filterQueryObj){
 				let temp = filtersConfig[key].uri_encode ? filterQueryObj[key].split(',').join('%2C') : filterQueryObj[key];
 				_.extend(clone, { [key]: temp });
 			}	

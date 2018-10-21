@@ -5,7 +5,7 @@ const _ = require('lodash');
 const queryString = require('query-string');
 
 const getCityId = (city) => async (dispatch) => {
-	let cityId, cityDetails;
+	let cityDetails;
 
 	cityDetails = await ZomatoService.getCityDetails(city).catch((e) => {
 		console.log(`There was an error fetching city details for: ${city}`);

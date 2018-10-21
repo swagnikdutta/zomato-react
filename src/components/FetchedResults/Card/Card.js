@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { CardWrapper, CardTop, CardBottom, Rating, ImageWrapper, Image, BasicDetail, Name, ShortAddress, LongAddress, InfoKeys, InfoValues, Button } from './Style';

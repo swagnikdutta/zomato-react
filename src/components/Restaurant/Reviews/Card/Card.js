@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { Wrapper, ImageWrapper, ProfileImage, Detail, Name, Stars, Review } from './Style';
 
