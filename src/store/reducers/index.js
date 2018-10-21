@@ -10,15 +10,18 @@ const initialState = {
 	restaurantReviews: {},
 	cuisines: [],
 	searchResults: [],
+	loaderVisibility: false,
 };
 
+const showLoader 					= (state) => updateObject(state, { loaderVisibility: true });
+const hideLoader 					= (state) => updateObject(state, { loaderVisibility: false });
 const getCityId 					= (state, { cityId }) => updateObject(state, { cityId });
 const fetchRestaurantCollections 	= (state, { restaurantCollections }) => updateObject(state, { restaurantCollections });
 const fetchRestaurantCategories 	= (state, { restaurantCategories }) => updateObject(state, { restaurantCategories });
 const fetchFilteredRestaurants 		= (state, { filteredRestaurants }) => updateObject(state, { filteredRestaurants });
 const fetchCuisinesInCity 			= (state, { cuisines }) => updateObject(state, { cuisines });
 const fetchSearchResults 			= (state, { searchResults }) => updateObject(state, { searchResults });
-const fetchRestaurantDetails 		= (state, { data: { restaurantDetails }}, { data: { restaurantReviews }}) => updateObject(state, { restaurantDetails, restaurantReviews });
+const fetchRestaurantDetails 		= (state, { data: { restaurantDetails }}, { data: { restaurantReviews }}) => updateObject(state, { restaurantDetails, restaurantReviews }); 
 
 const reducer = (state = initialState, action) => {
 	switch(action.type){
@@ -42,6 +45,12 @@ const reducer = (state = initialState, action) => {
 		}
 		case actionTypes.FETCH_SEARCH_RESULTS: {
 			return fetchSearchResults(state, action);
+		}
+		case actionTypes.SHOW_LOADER: {
+			return showLoader();
+		}
+		case actionTypes.HIDE_LOADER: {
+			return hideLoader();
 		}
 		default: return state;
 	}

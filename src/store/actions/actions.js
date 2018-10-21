@@ -42,6 +42,7 @@ const fetchRestaurantCategories = () => async (dispatch) => {
 }
 
 const fetchFilteredRestaurants = (filterParams) => async (dispatch) => {
+	showLoader(dispatch);
 	let	searchQuery = queryString.stringify(filterParams);
 
 	let filteredRestaurants = await ZomatoService.fetchFilteredRestaurants(searchQuery).catch((e) => {
@@ -52,6 +53,8 @@ const fetchFilteredRestaurants = (filterParams) => async (dispatch) => {
 		type: actionTypes.FETCH_FILTERED_RESTAURANTS,
 		filteredRestaurants: _.get(filteredRestaurants, 'data.restaurants')
 	});
+	
+	hideLoader(dispatch);
 }
 
 const fetchRestaurantDetails = (restaurantId) => async (dispatch) => {
@@ -93,6 +96,14 @@ const fetchSearchResults = (searchParams) => async (dispatch) => {
 		type: actionTypes.FETCH_SEARCH_RESULTS,
 		searchResults: _.get(searchResults, 'data.restaurants')
 	});
+}
+
+const showLoader = (dispatch) => {
+	dispatch({ type: actionTypes.SHOW_LOADER });
+}
+
+const hideLoader = (dispatch) => {
+	dispatch({ type: actionTypes.HIDE_LOADER });
 }
 
 export default {
