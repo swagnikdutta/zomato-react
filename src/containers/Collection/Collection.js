@@ -5,6 +5,7 @@ import _ from 'lodash';
 import Actions from '../../store/actions/actions';
 
 //  Components
+import Loader from '../../hoc/Loader/Loader';
 import Banner from '../../hoc/Banner/Banner';
 import CollectedRestaurants from '../../components/CollectedRestaurants/CollectedRestaurants';
 import Collections from '../../components/Collections/Collections';
@@ -48,6 +49,7 @@ class Collection extends Component{
 
 		return (
 			<Wrapper>
+				{this.props.loaderVisibility ? <Loader /> : null}
 				<BannerWrapper>
 					<Banner bannerImageUrl={bannerImageUrl} bannerHeight={bannerHeight} />
 					<BannerDetails>
@@ -79,6 +81,7 @@ const mapStateToProps = state => {
     return {
     	cityId: _.get(state, 'zomatoReducer.cityId', null),
     	filteredRestaurants: _.get(state, 'zomatoReducer.filteredRestaurants', []),
+    	loaderVisibility: _.get(state, 'zomatoReducer.loaderVisibility', false)
     };
 }
 

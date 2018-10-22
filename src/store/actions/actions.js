@@ -5,9 +5,9 @@ const _ = require('lodash');
 const queryString = require('query-string');
 
 const getCityId = (city) => async (dispatch) => {
-	let cityDetails;
-
-	cityDetails = await ZomatoService.getCityDetails(city).catch((e) => {
+	showLoader(dispatch);
+	
+	let cityDetails = await ZomatoService.getCityDetails(city).catch((e) => {
 		console.log(`There was an error fetching city details for: ${city}`);
 	});
 
@@ -15,12 +15,14 @@ const getCityId = (city) => async (dispatch) => {
 		type: actionTypes.FETCH_CITY_ID,
 		cityId: _.get(cityDetails, 'data.location_suggestions[0].id')
 	});
+
+	hideLoader(dispatch);
 }
 
 const fetchRestaurantCollections = (cityId) => async (dispatch) => {
-	let	restaurantCollections;
+	showLoader(dispatch);
 
-	restaurantCollections = await ZomatoService.fetchRestaurantCollections(cityId).catch((e) => {
+	let restaurantCollections = await ZomatoService.fetchRestaurantCollections(cityId).catch((e) => {
 		console.log(`There was an error fetching restaurant collections for cityId: ${cityId}`);
 	});
 
@@ -28,9 +30,13 @@ const fetchRestaurantCollections = (cityId) => async (dispatch) => {
 		type: actionTypes.FETCH_COLLECTIONS,
 		restaurantCollections: _.get(restaurantCollections, 'data.collections')
 	});
+
+	hideLoader(dispatch);
 }
 
 const fetchRestaurantCategories = () => async (dispatch) => {
+	showLoader(dispatch);
+
 	let restaurantCategories = await ZomatoService.fetchRestaurantCategories().catch((e) => {
 		console.log('There was an error fetching categories or restaurant types.')
 	});
@@ -39,11 +45,14 @@ const fetchRestaurantCategories = () => async (dispatch) => {
 		type: actionTypes.FETCH_CATEGORIES,
 		restaurantCategories: _.get(restaurantCategories, 'data.categories')
 	});
+
+	hideLoader(dispatch);
 }
 
 const fetchFilteredRestaurants = (filterParams) => async (dispatch) => {
-	let	searchQuery = queryString.stringify(filterParams);
+	showLoader(dispatch);
 
+	let	searchQuery = queryString.stringify(filterParams);
 	let filteredRestaurants = await ZomatoService.fetchFilteredRestaurants(searchQuery).catch((e) => {
 		console.log('There was an error fetching filtered list of restaurants.');
 	});
@@ -52,9 +61,13 @@ const fetchFilteredRestaurants = (filterParams) => async (dispatch) => {
 		type: actionTypes.FETCH_FILTERED_RESTAURANTS,
 		filteredRestaurants: _.get(filteredRestaurants, 'data.restaurants')
 	});
+
+	hideLoader(dispatch);
 }
 
 const fetchRestaurantDetails = (restaurantId) => async (dispatch) => {
+	showLoader(dispatch);
+
 	const restaurantDetailsPromise = ZomatoService.fetchRestaurantDetails(restaurantId).catch((e) => {
 		console.log(`There was an error fetching restaurant details. Restaurant Id: ${restaurantId}`);
 	});
@@ -69,9 +82,13 @@ const fetchRestaurantDetails = (restaurantId) => async (dispatch) => {
 			restaurantReviews: _.get(await restaurantReviewsPromise, 'data'),
 		}
 	});
+
+	hideLoader(dispatch);
 }
 
 const fetchCuisinesInCity = (cityId) => async (dispatch) => {
+	showLoader(dispatch);
+
 	const cuisines = await ZomatoService.fetchCuisinesInCity(cityId).catch((e) => {
 		console.log(`There was an error fetching cuisines for cityId: ${cityId}`);
 	});
@@ -80,11 +97,14 @@ const fetchCuisinesInCity = (cityId) => async (dispatch) => {
 		type: actionTypes.FETCH_CUISINES,
 		cuisines: _.get(cuisines, 'data.cuisines')
 	});
+
+	hideLoader(dispatch);
 }
 
 const fetchSearchResults = (searchParams) => async (dispatch) => {
+	showLoader(dispatch);
+
 	let searchQuery = queryString.stringify(searchParams, { encode: false });
-	
 	let searchResults = await ZomatoService.fetchFilteredRestaurants(searchQuery).catch((e) => {
 		console.log(`There was an error fetching search results for query: ${searchQuery}`);
 	});
@@ -93,6 +113,16 @@ const fetchSearchResults = (searchParams) => async (dispatch) => {
 		type: actionTypes.FETCH_SEARCH_RESULTS,
 		searchResults: _.get(searchResults, 'data.restaurants')
 	});
+
+	hideLoader(dispatch);
+}
+
+const showLoader = (dispatch) => {
+	dispatch({ type: actionTypes.SHOW_LOADER });
+}
+
+const hideLoader = (dispatch) => {
+	dispatch({ type: actionTypes.HIDE_LOADER });
 }
 
 export default {

@@ -5,6 +5,7 @@ import _ from 'lodash';
 import Actions from '../../store/actions/actions';
 import classes from './Style.css';
 // Components
+import Loader from '../../hoc/Loader/Loader';
 import Filters from '../../components/Filters/Filters';
 import FetchedResults from '../../components/FetchedResults/FetchedResults';
 import { Wrapper } from './Style';
@@ -75,15 +76,13 @@ class SearchResults extends Component{
 			}	
 		}
 
-		this.setState({ searchParams: clone }, () => {
-			console.log(`Updated search params: \n${JSON.stringify(this.state.searchParams, undefined, 4)}`);
-			this.props.fetchSearchResults(this.state.searchParams);
-		});		
+		this.setState({ searchParams: clone }, () => this.props.fetchSearchResults(this.state.searchParams));		
 	}
 
 	render(){
 		return (
 			<Wrapper>
+				{this.props.loaderVisibility ? <Loader /> : null}
 				<div className={classes.filters}>
 					<Filters 
 						cuisines={this.props.cuisines} 
@@ -103,6 +102,7 @@ const mapStateToProps = state => {
     	cuisines: _.get(state, 'zomatoReducer.cuisines', []),
     	searchResults: _.get(state, 'zomatoReducer.searchResults', []),
     	restaurantCategories: _.get(state, 'zomatoReducer.restaurantCategories', []),
+    	loaderVisibility: _.get(state, 'zomatoReducer.loaderVisibility', false)
     };
 }
 
