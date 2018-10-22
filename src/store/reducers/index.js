@@ -21,7 +21,7 @@ const fetchRestaurantCategories 	= (state, { restaurantCategories }) => updateOb
 const fetchFilteredRestaurants 		= (state, { filteredRestaurants }) => updateObject(state, { filteredRestaurants });
 const fetchCuisinesInCity 			= (state, { cuisines }) => updateObject(state, { cuisines });
 const fetchSearchResults 			= (state, { searchResults }) => updateObject(state, { searchResults });
-const fetchRestaurantDetails 		= (state, { data: { restaurantDetails }}, { data: { restaurantReviews }}) => updateObject(state, { restaurantDetails, restaurantReviews }); 
+const fetchRestaurantDetails 		= (state, { data: { restaurantDetails }}, { data: { restaurantReviews }}) => updateObject(state, { restaurantDetails, restaurantReviews });
 
 const reducer = (state = initialState, action) => {
 	switch(action.type){
