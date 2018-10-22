@@ -47,10 +47,10 @@ const reducer = (state = initialState, action) => {
 			return fetchSearchResults(state, action);
 		}
 		case actionTypes.SHOW_LOADER: {
-			return showLoader();
+			return showLoader(state);
 		}
 		case actionTypes.HIDE_LOADER: {
-			return hideLoader();
+			return hideLoader(state);
 		}
 		default: return state;
 	}

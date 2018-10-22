@@ -7,6 +7,7 @@ import Actions from '../../store/actions/actions';
 import classes from './Style.css';
 
 // Components
+import Loader from '../../hoc/Loader/Loader';
 import Banner from '../../hoc/Banner/Banner';
 import Overview from '../../components/Restaurant/Overview/Overview';
 import Reviews from '../../components/Restaurant/Reviews/Reviews';
@@ -32,6 +33,7 @@ class Restaurant extends Component{
 
 		return (
 			<Wrapper>
+				{this.props.loaderVisibility ? <Loader /> : null}
 				<BannerWrapper>
 					<Banner bannerImageUrl={bannerImageUrl} bannerHeight={'350px'} />
 					<BannerDetails>
@@ -59,6 +61,7 @@ const mapStateToProps = state => {
     return {
     	restaurantDetails: _.get(state, 'zomatoReducer.restaurantDetails', {}),
     	restaurantReviews: _.get(state, 'zomatoReducer.restaurantReviews', {}),
+    	loaderVisibility: _.get(state, 'zomatoReducer.loaderVisibility', false)
     };
 }
 
