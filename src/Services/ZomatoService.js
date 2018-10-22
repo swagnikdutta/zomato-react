@@ -1,53 +1,41 @@
 import APIService from './APIService';
 
-const getCityDetails = async (city) => {
-	return await APIService.invoke({
-		url: `https://developers.zomato.com/api/v2.1/cities?q=${city}`,
-		method: 'GET'
-	});
-} 
+const baseUrl = 'https://developers.zomato.com/api/v2.1/';
 
-const fetchRestaurantCollections = async (cityId) => {
-	return await APIService.invoke({
-		url: `https://developers.zomato.com/api/v2.1/collections?city_id=${cityId}`,
-		method: 'GET'
-	});
-}
+const getCityDetails = async (city) => await APIService.invoke({
+	url: `${baseUrl}cities?q=${city}`,
+	method: 'GET'
+});
 
-const fetchRestaurantCategories = async () => {
-	return await APIService.invoke({
-		url: 'https://developers.zomato.com/api/v2.1/categories',
-		method: 'GET'
-	});	
-}
+const fetchRestaurantCollections = async (cityId) => await APIService.invoke({
+	url: `${baseUrl}collections?city_id=${cityId}`,
+	method: 'GET'
+});
 
-const fetchFilteredRestaurants = async (searchQuery) => {
-	return await APIService.invoke({
-		url: `https://developers.zomato.com/api/v2.1/search?${searchQuery}`,
-		method: 'GET'
-	});
-}
+const fetchRestaurantCategories = async () => await APIService.invoke({
+	url: `${baseUrl}categories`,
+	method: 'GET'
+});
 
-const fetchRestaurantDetails = async (restaurantId) => {
-	return await APIService.invoke({
-		url: `https://developers.zomato.com/api/v2.1/restaurant?res_id=${restaurantId}`,
-		method: 'GET'
-	});
-}
+const fetchFilteredRestaurants = async (searchQuery) => await APIService.invoke({
+	url: `${baseUrl}search?${searchQuery}`,
+	method: 'GET'
+});
 
-const fetchRestaurantReviews = async (restaurantId) => {
-	return await APIService.invoke({
-		url: `https://developers.zomato.com/api/v2.1/reviews?res_id=${restaurantId}`,
-		method: 'GET'
-	});
-}
+const fetchRestaurantDetails = async (restaurantId) => await APIService.invoke({
+	url: `${baseUrl}restaurant?res_id=${restaurantId}`,
+	method: 'GET'
+});
 
-const fetchCuisinesInCity = async (cityId) => {
-	return await APIService.invoke({
-		url: `https://developers.zomato.com/api/v2.1/cuisines?city_id=${cityId}`,
-		method: 'GET'
-	});
-}
+const fetchRestaurantReviews = async (restaurantId) => await APIService.invoke({
+	url: `${baseUrl}reviews?res_id=${restaurantId}`,
+	method: 'GET'
+});
+
+const fetchCuisinesInCity = async (cityId) => await APIService.invoke({
+	url: `${baseUrl}cuisines?city_id=${cityId}`,
+	method: 'GET'
+});
 
 export default {
 	getCityDetails,
