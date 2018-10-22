@@ -26,7 +26,7 @@ class Home extends Component{
 			await this.props.getCityId(city);
 		}
 
-		let pathname = `/${city.toLowerCase()}` + (searchQuery ? `/restaurants/${searchQuery}` : '/restaurants'),
+		let pathname = `/${city.toLowerCase()}` + (searchQuery ? `/restaurants/${searchQuery}` : '/'),
 			navigateObj = {
 				pathname,
 				state: {

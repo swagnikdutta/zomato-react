@@ -76,10 +76,7 @@ class SearchResults extends Component{
 			}	
 		}
 
-		this.setState({ searchParams: clone }, () => {
-			console.log(`Updated search params: \n${JSON.stringify(this.state.searchParams, undefined, 4)}`);
-			this.props.fetchSearchResults(this.state.searchParams);
-		});		
+		this.setState({ searchParams: clone }, () => this.props.fetchSearchResults(this.state.searchParams));		
 	}
 
 	render(){
