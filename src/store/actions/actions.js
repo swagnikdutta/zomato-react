@@ -1,4 +1,4 @@
-import ZomatoService from '../../services/ZomatoService';
+import ZomatoService from '../../Services/ZomatoService';
 import * as actionTypes from './actionTypes';
 
 const _ = require('lodash');
