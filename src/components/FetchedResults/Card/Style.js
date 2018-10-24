@@ -9,8 +9,10 @@ export const CardWrapper = styled.div`
 		border-radius: 8px;
 		border: 1px solid lightgrey;
 	}
-	&:hover{
-		
+
+	@media (min-width: 320px) and (max-width: 480px) {
+		width: 100%;
+		margin-bottom: 5%;
 	}
 `;
 
@@ -19,6 +21,10 @@ export const CardTop = styled.div`
 	overflow: hidden;
 	padding-bottom: 10px;
 	border-bottom: 1px solid lightgrey;
+
+	@media (min-width: 320px) and (max-width: 480px) {
+		height: auto;
+	}
 `;
 
 export const CardBottom = styled.div`
@@ -30,6 +36,10 @@ export const ImageWrapper = styled.div`
 	width: 20%;
 	float: left;
 	margin-right: 2%;
+
+	@media (min-width: 320px) and (max-width: 480px) {
+		display: none;
+	}
 `;
 
 export const Image = styled.div`
@@ -44,6 +54,10 @@ export const BasicDetail = styled.div`
 	height: 100%;
 	width: 70%;
 	float: left;
+
+	@media (min-width: 320px) and (max-width: 480px) {
+		width: 88%;
+	}
 `;
 
 export const Rating = styled.div`
@@ -54,6 +68,12 @@ export const Rating = styled.div`
 	background-color: ${props => `#${props.ratingColor}`};
 	color: #fff;
 	border-radius: 4px;
+
+	@media (min-width: 320px) and (max-width: 480px) {
+		width: 12%;
+		padding: 5px 0;
+		font-size: 0.9rem;
+	}
 `;
 
 export const Name = styled.div`
@@ -61,6 +81,10 @@ export const Name = styled.div`
 	font-weight: bold;
 	color: #cb202d;
 	margin-bottom: 5px;
+
+	@media (min-width: 320px) and (max-width: 480px) {
+		font-size: 1.2rem;
+	}
 `;
 
 export const ShortAddress = styled.div`
@@ -72,6 +96,10 @@ export const ShortAddress = styled.div`
 export const LongAddress = styled.div`
 	font-size: 0.9rem;
 	color: grey;
+
+	@media (min-width: 320px) and (max-width: 480px) {
+		font-size: 0.8rem;
+	}
 `;
 
 export const InfoKeys = styled.div`
@@ -110,5 +138,12 @@ export const Button = styled.button`
 		background-color: #e57373;
 		color: #fff;
 		transition: background-color 300ms, color 300ms;
+	}
+
+	@media (min-width: 320px) and (max-width: 480px) {
+		background-color: #e57373;
+		color: #fff;
+		padding: 8px;
+		font-size: 0.7rem;
 	}
 `;

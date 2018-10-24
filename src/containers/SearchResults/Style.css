@@ -8,3 +8,13 @@
 	width: 77%;
 	float: left;
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+	.filters{
+		display: none;
+	}
+	
+	.results{
+		width: 100%;
+	}
+}
