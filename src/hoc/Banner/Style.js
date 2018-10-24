@@ -13,6 +13,11 @@ export const Banner = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
+	@media (min-width: 320px) and (max-width: 480px) {
+    	height: ${props => props.renderSource && props.renderSource === 'Home' ? defaultBannerHeight : '250px'};
+    	background-position: bottom;
+	}
 `;
 
 export const DarkFilter = styled.div`

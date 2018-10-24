@@ -14,6 +14,11 @@ export const CardWrapper = styled.div`
 	&:nth-child(3n){
 		margin-right: 0;
 	}
+
+	@media (min-width: 320px) and (max-width: 480px) {
+    	width: 100%;
+    	margin-bottom: 5%;
+	}
 `;
 
 export const CardImage = styled.div`
@@ -41,6 +46,7 @@ export const CardDetails = styled.div`
 	border-left: 1px solid #C8C8C8;
 	height: 40%;
 	padding: 2.5%;
+	overflow: hidden;
 `;
 
 export const Name = styled.p`

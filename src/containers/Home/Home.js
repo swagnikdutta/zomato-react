@@ -44,8 +44,8 @@ class Home extends Component{
 		let city = this.props.match.params.city;
 		return (
 			<div>
-				{this.props.loaderVisibility ? <Loader /> : null}
-				<Banner bannerOpacity={0.5}>
+				{ this.props.loaderVisibility ? <Loader /> : null }
+				<Banner bannerOpacity={0.5} renderSource={'Home'}>
 					<SearchUtility city={city} onSearchEventFired={(searchData) => this.handleSearchEvent(searchData)} />
 				</Banner>
 				<Collections restaurantCollections={this.props.restaurantCollections} city={city} renderSource={'Home'} />
