@@ -39,7 +39,8 @@ class Restaurant extends Component{
 					<BannerDetails>
 						<Title>{restaurantName}</Title>
 						<Description>
-							{restaurantLocation}&emsp;{cuisines}
+							{restaurantLocation}<br />
+							{cuisines}
 						</Description>
 
 						<div className={classes.RatingWrapper}>

@@ -27,3 +27,14 @@
 	color: #ff9e80;
 	font-size: 2em;
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+	.icon_location, 
+	.icon_cuisines, 
+	.icon_average_cost_for_two, 
+	.icon_has_online_delivery, 
+	.icon_is_table_reservation_supported, 
+	.icon_has_table_booking{
+		font-size: 1.5em;
+	}
+}

@@ -20,12 +20,20 @@ export const BannerDetails = styled.div`
 	border-left: 1px solid #fff;
 	border-radius: 0 0 4px 4px;
 	position: relative;
+
+	@media (min-width: 320px) and (max-width: 480px) {
+		padding: 1rem 0.5rem;
+	}
 `;
 
 export const Title = styled.p`
 	font-size: 1.8rem;
 	margin: 0;
 	font-weight: bold;
+
+	@media (min-width: 320px) and (max-width: 480px) {
+		font-size: 1.4rem;
+	}
 `;
 
 export const Description = styled.p`
@@ -33,6 +41,10 @@ export const Description = styled.p`
 	font-size: 0.9rem;
 	font-family: 'Muli', sans-serif;
 	margin: 8px 0;
+
+	@media (min-width: 320px) and (max-width: 480px) {
+		font-size: 12px;
+	}
 `;
 
 export const Rating = styled.div`
@@ -43,5 +55,9 @@ export const Rating = styled.div`
 	border-radius: 4px;
 	text-align: center;
 	background-color: ${props => `#${props.ratingColor}`};
+
+	@media (min-width: 320px) and (max-width: 480px) {
+		font-size: 1.2rem;
+	}
 `;
 

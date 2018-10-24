@@ -5,4 +5,10 @@ export const Wrapper = styled.div`
 	float: left;
 	padding: 20px;
 	border-left: 1px solid #C8C8C8;
+
+	@media (min-width: 320px) and (max-width: 480px) {
+		width: 100%;
+		border: none;
+		padding: 0;
+	}
 `;
