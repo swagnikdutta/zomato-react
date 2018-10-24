@@ -20,6 +20,9 @@ export const CardWrapper = styled.div`
 		box-shadow: ${props => props.renderSource === 'Home' ? '1px 1px 1px #BBBBBB' : 'none'};
 		transition: box-shadow 300ms;
 	}
+	@media (min-width: 320px) and (max-width: 480px) {
+    	width: 100%;
+	}
 `;
 
 export const CardImage = styled.div`

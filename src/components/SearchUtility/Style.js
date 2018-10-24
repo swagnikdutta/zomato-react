@@ -10,6 +10,11 @@ export const Input = styled.input`
 	position: relative;
 	z-index: 20;
 	outline: none;
+
+	@media (min-width: 320px) and (max-width: 480px) {
+    	width: 90%;
+    	margin-left: 5%;
+	}
 `;
 
 export const Button = styled.button`
@@ -28,6 +33,12 @@ export const Button = styled.button`
 	}
 	&:active{
 		background-color: black;
+	}
+	
+	@media (min-width: 320px) and (max-width: 480px) {
+    	width: 90%;
+    	margin-left: 5%;
+    	margin-top: .5em;
 	}
 `;
 
