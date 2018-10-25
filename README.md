@@ -1,6 +1,6 @@
 # Zomato Clone
 
-A clone of the [zomato website](https://www.zomato.com) made using zomato's [public API](https://www.zomato.com)
+A clone of the [zomato website](https://www.zomato.com) made using zomato's [public API](https://developers.zomato.com/api)
 
 __Website:__ Hosted on [Heroku](http://bit.ly/swagnikdutta_zomato)
 
