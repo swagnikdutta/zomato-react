@@ -3,12 +3,11 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import Actions from '../../store/actions/actions';
-import classes from './Style.css';
 // Components
 import Loader from '../../hoc/Loader/Loader';
 import Filters from '../../components/Filters/Filters';
 import FetchedResults from '../../components/FetchedResults/FetchedResults';
-import { Wrapper } from './Style';
+import { Wrapper, FiltersWrapper, ResultsWrapper } from './Style';
 // Config
 import { filters as filtersConfig } from '../../config/filtersConfig';
 
@@ -83,15 +82,15 @@ class SearchResults extends Component{
 		return (
 			<Wrapper>
 				{this.props.loaderVisibility ? <Loader /> : null}
-				<div className={classes.filters}>
+				<FiltersWrapper>
 					<Filters 
 						cuisines={this.props.cuisines} 
 						onFiltersUpdated={(filterQueryString, queryKey) => { this.handleUpdatedFilters(filterQueryString, queryKey) }}
 						restaurantCategories={this.props.restaurantCategories} />
-				</div>
-				<div className={classes.results}>
+				</FiltersWrapper>
+				<ResultsWrapper>
 					<FetchedResults restaurants={this.props.searchResults} city={this.props.match.params.city} />
-				</div>
+				</ResultsWrapper>
 			</Wrapper>
 		);
 	}
