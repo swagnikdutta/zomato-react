@@ -4,14 +4,12 @@ import _ from 'lodash';
 
 import Actions from '../../store/actions/actions';
 
-import classes from './Style.css';
-
 // Components
 import Loader from '../../hoc/Loader/Loader';
 import Banner from '../../hoc/Banner/Banner';
 import Overview from '../../components/Restaurant/Overview/Overview';
 import Reviews from '../../components/Restaurant/Reviews/Reviews';
-import { Wrapper, BannerWrapper, BannerDetails, Title, Description, Rating } from './Style';
+import { Wrapper, BannerWrapper, BannerDetails, Title, Description, Rating, RatingWrapper, MaxRating, VoteCount } from './Style';
 
 class Restaurant extends Component{
 
@@ -43,12 +41,12 @@ class Restaurant extends Component{
 							{cuisines}
 						</Description>
 
-						<div className={classes.RatingWrapper}>
+						<RatingWrapper>
 							<Rating ratingColor={ratingColor}>
-								{aggregateRating}<span className={classes.MaxRating}>/5</span>
+								{aggregateRating}<MaxRating>/5</MaxRating>
 							</Rating>
-							<div className={classes.VoteCount}>{voteCount} votes</div>
-						</div>
+							<VoteCount>{voteCount} votes</VoteCount>
+						</RatingWrapper>
 					</BannerDetails>
 				</BannerWrapper>
 				<Overview restaurantDetails={restaurantDetails} />

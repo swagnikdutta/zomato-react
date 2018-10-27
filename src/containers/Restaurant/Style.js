@@ -61,3 +61,21 @@ export const Rating = styled.div`
 	}
 `;
 
+export const RatingWrapper = styled.div`
+	position: absolute;
+	right: 1rem;
+	top: 1rem;
+`;
+
+export const MaxRating = styled.span`
+	opacity: 0.5;
+	font-size: 1.5rem;
+`;
+
+export const VoteCount = styled.div`
+	font-size: 0.8rem;
+	color: #B1B1B1;
+	text-align: center;
+	margin-top: 8%;
+`;
+
