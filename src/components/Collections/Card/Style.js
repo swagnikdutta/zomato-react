@@ -43,6 +43,7 @@ export const CardDetails = styled.div`
 	padding: 4%;
 	border: ${props => props.renderSource === 'Collection' ? '1px solid #D3D3D3' : 'none'};
 	border-radius: ${props => props.renderSource === 'Collection' ? '0 4px 4px 0' : 'none'};
+	overflow: hidden;
 `;
 
 export const Title = styled.p`
@@ -57,7 +58,4 @@ export const Description = styled.p`
 	font-size: 13px;
 	color: grey;
 	font-family: 'Muli', sans-serif;
-	white-space: pre; 
-	overflow: hidden;
-	text-overflow: ellipsis;
 `;
