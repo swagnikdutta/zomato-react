@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Route path='/' exact render = { () => <Redirect to='/bangalore' /> } />
+        <Route path='/' exact render = { () => <Redirect to='/bengaluru' /> } />
         <Route path='/:city' exact component={Home} />
         <Route path='/:city/collection/:collectionId' exact component={Collection} />
         <Route path='/:city/restaurant/:restaurantId' exact component={Restaurant} />
