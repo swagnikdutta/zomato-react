@@ -1,4 +1,4 @@
-const masterConfig = {
+module.exports = {
 	restaurant: {
 		name: {
 			path: 'name',
@@ -36,7 +36,3 @@ const masterConfig = {
 		}
 	}
 };
-
-module.exports = {
-	...masterConfig
-}

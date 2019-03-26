@@ -1,4 +1,4 @@
-const masterConfig = {
+module.exports = {
 	filters: {
 		cuisines: {
 			label: 'CUISINE',
@@ -21,8 +21,4 @@ const masterConfig = {
 			uri_encode: true,
 		}
 	}
-}
-
-module.exports = {
-	...masterConfig
 }

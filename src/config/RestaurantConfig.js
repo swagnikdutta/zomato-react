@@ -1,4 +1,4 @@
-const masterConfig = {
+module.exports = {
 	common: {
 		location: {
 			fa_icon: 'fas fa-map-marker-alt',
@@ -55,7 +55,3 @@ const masterConfig = {
 		}
 	}
 };
-
-module.exports = {
-	...masterConfig
-}
